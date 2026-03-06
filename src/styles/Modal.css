@@ -42,6 +42,12 @@
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
   z-index: 1001;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.2) rotate(90deg);
+  color: var(--cor1);
 }
 
 .modal-details {

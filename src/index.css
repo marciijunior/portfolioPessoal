@@ -2,19 +2,17 @@
   box-sizing: border-box;
 }
 
-/* Trava a rolagem do body e define a altura base */
 html, body, #root, .app-container {
-  height: 100vh; /* Ocupa 100% da altura da janela de visualização */
+  height: 100vh;
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* A regra mais importante: impede a rolagem no nível do documento */
+  overflow: hidden;
 }
 
-/* Designa o .content-wrapper como a única área rolável */
 .content-wrapper {
-  height: 100%; /* Ocupa toda a altura do .app-container */
-  overflow-y: auto; /* Adiciona la barra de rolagem vertical APENAS aqui */
+  height: 100%;
+  overflow-y: auto;
   overflow-x: hidden;
-  position: relative; /* A MÁGICA ACONTECE AQUI */
+  position: relative;
 }

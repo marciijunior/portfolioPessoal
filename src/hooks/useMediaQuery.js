@@ -6,11 +6,10 @@ export const useMediaQuery = (query) => {
   useEffect(() => {
     const media = window.matchMedia(query);
     const listener = () => setMatches(media.matches);
-    
-    // O listener moderno
+
     if (media.addEventListener) {
       media.addEventListener('change', listener);
-    } else { // Para navegadores mais antigos
+    } else {
       media.addListener(listener);
     }
 

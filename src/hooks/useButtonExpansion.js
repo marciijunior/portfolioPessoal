@@ -78,7 +78,7 @@ export const useButtonExpansion = () => {
     expandedButtonId,
     expandedOrigin,
     buttonRefs,
-    botoesData: BOTOES_DATA, // Supondo que BOTOES_DATA está definido aqui ou importado
+    botoesData: BOTOES_DATA,
     handleButtonClick,
     setExpandedButtonId,
   };

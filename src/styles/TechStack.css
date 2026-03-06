@@ -1,9 +1,5 @@
-/* src/styles/TechStack.css - PADDING VERTICAL ZERADO */
-
-/* --- ESTILOS GLOBAIS DA SEÇÃO --- */
 .tech-stack-section {
   background-color: var(--cor5);
-  /* PADRÃO ZERADO: Padding vertical removido */
   padding: 0 18.75rem;
 }
 
@@ -11,7 +7,6 @@
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  /* Adicionado padding-top para compensar a remoção no container principal */
   padding: 100px 0 40px 0;
 }
 
@@ -78,8 +73,6 @@
   background-color: var(--cor1);
   color: var(--cor5);
 }
-
-/* --- RESPONSIVIDADE COM PADDING VERTICAL ZERADO --- */
 @media (max-width: 1700px) {
   .tech-stack-section {
     padding: 0 16rem;

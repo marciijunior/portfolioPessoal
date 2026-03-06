@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function Tecnologias({ sectionRef, techStackData, refs }) {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Tecnologias({ sectionRef, techStackData }) {
   const isCarouselView = useMediaQuery("(max-width: 1200px)");
+  const containerRef = useRef(null);
 
   const settings = {
     dots: true,
@@ -20,6 +25,114 @@ export default function Tecnologias({ sectionRef, techStackData, refs }) {
     centerMode: true,
     centerPadding: "0px",
   };
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const title = containerRef.current?.querySelector('.titulo-tech');
+      const text = containerRef.current?.querySelector('.texto-tech');
+      const columns = containerRef.current?.querySelectorAll('.tech-category-column');
+      const techItems = containerRef.current?.querySelectorAll('.tech-item');
+
+      if (title) {
+        gsap.fromTo(
+          title,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      if (text) {
+        gsap.fromTo(
+          text,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            delay: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      if (columns?.length) {
+        gsap.fromTo(
+          columns,
+          { y: 60, opacity: 0, scale: 0.95 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            delay: 0.3,
+            ease: "back.out(1.2)",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 70%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      if (techItems?.length) {
+        gsap.fromTo(
+          techItems,
+          { scale: 0, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            stagger: 0.04,
+            delay: 0.6,
+            ease: "back.out(2)",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 70%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+
+        techItems.forEach((item) => {
+          item.addEventListener('mouseenter', () => {
+            gsap.to(item, {
+              scale: 1.1,
+              y: -3,
+              duration: 0.3,
+              ease: "back.out(1.7)",
+            });
+          });
+          item.addEventListener('mouseleave', () => {
+            gsap.to(item, {
+              scale: 1,
+              y: 0,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          });
+        });
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [isCarouselView]);
 
   const renderCategoryColumn = (title, techs) => (
     <div className="tech-category-column">
@@ -35,17 +148,20 @@ export default function Tecnologias({ sectionRef, techStackData, refs }) {
   );
 
   return (
-    <section id="tecnologias" ref={sectionRef} className="tech-stack-section">
+    <section
+      id="tecnologias"
+      ref={(el) => {
+        containerRef.current = el;
+        if (sectionRef) sectionRef.current = el;
+      }}
+      className="tech-stack-section"
+    >
       <div className="interligacao-tech">
-        <h2 className="titulo-tech" ref={refs.tecnologias_titulo}>
-          Tecnologias e Ferramentas
-        </h2>
-        <p className="texto-tech" ref={refs.tecnologias_texto}>
-          As ferramentas e linguagens que mais utilizo.
-        </p>
+        <h2 className="titulo-tech">Tecnologias e Ferramentas</h2>
+        <p className="texto-tech">As ferramentas e linguagens que mais utilizo.</p>
       </div>
 
-      <div className="tech-stack-container" ref={refs.tecnologias_container}>
+      <div className="tech-stack-container">
         {isCarouselView ? (
           <div className="tech-carousel-wrapper">
             <div className="tech-carousel">

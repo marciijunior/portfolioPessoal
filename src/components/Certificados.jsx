@@ -1,26 +1,122 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function Certificados({ sectionRef, certificatesData, refs }) {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Certificados({ sectionRef, certificatesData }) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const title = containerRef.current?.querySelector('.titulo-certificado');
+      const text = containerRef.current?.querySelector('.texto-certificado');
+      const swiperContainer = containerRef.current?.querySelector('.certificates-swiper');
+
+      if (title) {
+        gsap.fromTo(
+          title,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      if (text) {
+        gsap.fromTo(
+          text,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            delay: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      if (swiperContainer) {
+        gsap.fromTo(
+          swiperContainer,
+          { y: 60, opacity: 0, scale: 0.95 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            delay: 0.3,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 75%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      const cards = containerRef.current?.querySelectorAll('.certificate-card');
+      cards?.forEach((card) => {
+        card.addEventListener('mouseenter', () => {
+          gsap.to(card, {
+            y: -8,
+            scale: 1.02,
+            boxShadow: "0 15px 35px rgba(255, 77, 5, 0.15)",
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        });
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            y: 0,
+            scale: 1,
+            boxShadow: "0 5px 15px rgba(0, 0, 0, 0.4)",
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        });
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="certificados"
-      ref={sectionRef}
+      ref={(el) => {
+        containerRef.current = el;
+        if (sectionRef) sectionRef.current = el;
+      }}
       className="container-certificados"
     >
       <div className="interligacao-certificado">
-        <h2 className="titulo-certificado" ref={refs.certificados_titulo}>
-          Certificados e Cursos
-        </h2>
-        <p className="texto-certificado" ref={refs.certificados_texto}>
+        <h2 className="titulo-certificado">Certificados e Cursos</h2>
+        <p className="texto-certificado">
           Algumas das minhas certificações e cursos mais recentes.
         </p>
       </div>
-      <div ref={refs.certificados_container}>
+      <div>
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={30}

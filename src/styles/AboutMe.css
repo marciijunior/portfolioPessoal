@@ -206,7 +206,7 @@
     line-height: 1.2;
   }
 }
-@media (maxdth: 600px) {-wi
+@media (max-width: 600px) {
   .about-me-content {
     padding: 0 2rem;
   }
