@@ -262,29 +262,28 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
+    // Usa ScrollTrigger (já configurado com o scroller customizado)
+    // em vez de IntersectionObserver, que pode falhar em produção
+    // quando o scroll container não é o viewport padrão.
+    const triggers = [];
 
-    const observerOptions = {
-      root: container,
-      rootMargin: "0px",
-      threshold: 0.4,
-    };
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActiveSection(entry.target.id);
-      });
-    };
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    Object.values(sectionRefs).forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
+    Object.entries(sectionRefs).forEach(([id, ref]) => {
+      if (ref.current) {
+        triggers.push(
+          ScrollTrigger.create({
+            trigger: ref.current,
+            start: "top center",
+            end: "bottom center",
+            onToggle: (self) => {
+              if (self.isActive) setActiveSection(id);
+            },
+          })
+        );
+      }
     });
 
     return () => {
-      Object.values(sectionRefs).forEach((ref) => {
-        if (ref.current) observer.unobserve(ref.current);
-      });
+      triggers.forEach((t) => t.kill());
     };
   }, []);
 
