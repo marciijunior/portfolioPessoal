@@ -84,13 +84,13 @@ export default function App() {
       title: "JavaScript: construindo páginas dinâmicas",
       issuer: "Alura",
       thumbnailSrc: "/certificates/images/certificado9.png",
-      pdfSrc: "/certificates/pdf/certicado9Pdf.pdf",
+      pdfSrc: "/certificates/pdf/certificado9Pdf.pdf",
     },
     {
       title: "JavaScript: entendendo promises e async/await",
       issuer: "Alura",
       thumbnailSrc: "/certificates/images/certificado10.png",
-      pdfSrc: "/certificates/pdf/certicado10Pdf.pdf",
+      pdfSrc: "/certificates/pdf/certificado10Pdf.pdf",
     },
     {
       title: "JavaScript: explorando a linguagem",
