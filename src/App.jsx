@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -190,7 +190,9 @@ export default function App() {
     certificados: useRef(null),
   };
 
-  useEffect(() => {
+  // useLayoutEffect garante que defaults + scrollerProxy rodem ANTES
+  // dos useEffect dos componentes filhos que criam ScrollTriggers
+  useLayoutEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
@@ -215,9 +217,15 @@ export default function App() {
       },
     });
 
-    container.addEventListener("scroll", () => ScrollTrigger.update());
+    const onScroll = () => ScrollTrigger.update();
+    container.addEventListener("scroll", onScroll);
+
+    // Recalcula posições após o proxy estar configurado
+    ScrollTrigger.refresh();
 
     return () => {
+      container.removeEventListener("scroll", onScroll);
+      ScrollTrigger.defaults({ scroller: window });
       ScrollTrigger.killAll();
     };
   }, []);
