@@ -1,0 +1,357 @@
+/* ========== Portfolio Section ========== */
+.container-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 4rem;
+  background-color: var(--cor5);
+  overflow: hidden;
+}
+
+/* ---------- Header ---------- */
+.interligacao-portfolio {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  color: var(--cor3);
+  padding: 0 0 2.5rem 0;
+}
+
+.titulo-portfolio {
+  font-weight: 300;
+  font-size: 2rem;
+  color: var(--cor1);
+  margin: 0;
+}
+
+.texto-portfolio {
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ---------- Showcase Grid ---------- */
+.portfolio-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ---------- Card ---------- */
+.portfolio-showcase-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.portfolio-showcase-card.reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.portfolio-showcase-card.reverse .showcase-image-wrapper {
+  order: 2;
+}
+
+.portfolio-showcase-card.reverse .showcase-info {
+  order: 1;
+}
+
+/* ---------- Image Side ---------- */
+.showcase-image-wrapper {
+  position: relative;
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.showcase-image-inner {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #222;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.showcase-image-wrapper:hover .showcase-image-inner {
+  border-color: rgba(255, 77, 5, 0.4);
+  box-shadow:
+    0 20px 60px -10px rgba(0, 0, 0, 0.6),
+    0 0 40px -10px rgba(255, 77, 5, 0.15);
+}
+
+.showcase-image {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.showcase-image-wrapper:hover .showcase-image {
+  transform: scale(1.04);
+}
+
+.showcase-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.showcase-image-wrapper:hover .showcase-image-overlay {
+  opacity: 1;
+}
+
+.showcase-view-label {
+  color: var(--cor3);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 100px;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.showcase-image-wrapper:hover .showcase-view-label {
+  border-color: var(--cor1);
+}
+
+/* ---------- Number Badge ---------- */
+.showcase-number {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  font-size: 4rem;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 77, 5, 0.35);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 2;
+  transition: -webkit-text-stroke-color 0.4s ease;
+}
+
+.showcase-image-wrapper:hover .showcase-number {
+  -webkit-text-stroke-color: rgba(255, 77, 5, 0.7);
+}
+
+/* ---------- Info Side ---------- */
+.showcase-info {
+  display: flex;
+  align-items: center;
+}
+
+.showcase-info-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.showcase-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--cor3);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.showcase-description {
+  font-size: 0.95rem;
+  color: #999;
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* ---------- Tech Tags ---------- */
+.showcase-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.showcase-tech-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  background: rgba(255, 77, 5, 0.08);
+  color: var(--cor1);
+  border: 1px solid rgba(255, 77, 5, 0.2);
+  letter-spacing: 0.3px;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.showcase-tech-tag:hover {
+  background: rgba(255, 77, 5, 0.15);
+  border-color: rgba(255, 77, 5, 0.5);
+}
+
+/* ---------- Action Buttons ---------- */
+.showcase-actions {
+  display: flex;
+  gap: 1.875rem;
+  margin-top: 0.5rem;
+}
+
+.showcase-btn {
+  padding: 1.4rem 1.4rem;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.6vh;
+  font-weight: 400;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  gap: 0.5rem;
+}
+
+.showcase-btn-primary {
+  background-color: var(--cor1);
+  color: var(--cor3);
+  transition: background-color 0.3s ease;
+}
+
+.showcase-btn-primary:hover {
+  background-color: #e64400;
+}
+
+.showcase-btn-primary:active {
+  transform: translateY(0.0625rem);
+}
+
+.showcase-btn-secondary {
+  background: #141414;
+  color: var(--cor3);
+  transition: background-color 0.3s ease;
+}
+
+.showcase-btn-secondary:hover {
+  background-color: #292929;
+  box-shadow:
+    inset 2px 2px 5px rgb(34, 34, 34),
+    inset -2px -2px 5px rgb(22, 22, 22);
+}
+
+.showcase-btn-secondary:active {
+  transform: translateY(0.0625rem);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 1400px) {
+  .container-portfolio {
+    padding: 5rem 3rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .portfolio-showcase-card,
+  .portfolio-showcase-card.reverse {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .portfolio-showcase-card.reverse .showcase-image-wrapper,
+  .portfolio-showcase-card.reverse .showcase-info {
+    order: unset;
+  }
+
+  .showcase-image {
+    height: 280px;
+  }
+
+  .titulo-portfolio {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .container-portfolio {
+    padding: 4rem 2rem;
+  }
+
+  .interligacao-portfolio {
+    padding: 0 0 1.5rem 0;
+  }
+
+  .titulo-portfolio {
+    font-size: 1.5rem;
+  }
+
+  .texto-portfolio {
+    font-size: 0.9rem;
+  }
+
+  .portfolio-showcase {
+    gap: 3rem;
+  }
+
+  .showcase-image {
+    height: 220px;
+  }
+
+  .showcase-title {
+    font-size: 1.3rem;
+  }
+
+  .showcase-description {
+    font-size: 0.9rem;
+  }
+
+  .showcase-number {
+    font-size: 3rem;
+    top: -10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container-portfolio {
+    padding: 3rem 1.25rem;
+  }
+
+  .titulo-portfolio {
+    font-size: 1.2rem;
+  }
+
+  .texto-portfolio {
+    font-size: 0.8rem;
+  }
+
+  .showcase-image {
+    height: 180px;
+  }
+
+  .showcase-title {
+    font-size: 1.15rem;
+  }
+
+  .showcase-actions {
+    flex-direction: column;
+  }
+
+  .showcase-btn {
+    justify-content: center;
+  }
+}

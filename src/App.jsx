@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useCallback,
+} from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,19 +17,7 @@ import Certificados from "./components/Certificados";
 import Footer from "./components/Footer";
 import Feed from "./components/Feed";
 
-import "./styles/Header.css";
-import "./styles/PosHeader.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "./styles/Portfolio.css";
-import "./styles/Modal.css";
-import "./styles/Sidebar.css";
-import "./styles/InviteScroll.css";
-import "./styles/AboutMe.css";
-import "./styles/TechStack.css";
-import "./styles/Certificates.css";
-import "./styles/Feed.css";
-import "./styles/Scrollbar.css";
+import "./styles/global.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +27,8 @@ export default function App() {
 
   const certificatesData = [
     {
-      title: "Acessibilidade no HTML: escrevendo códigos semânticos para inclusão",
+      title:
+        "Acessibilidade no HTML: escrevendo códigos semânticos para inclusão",
       issuer: "Alura",
       thumbnailSrc: "/certificates/images/certificado1.png",
       pdfSrc: "/certificates/pdf/certificado1Pdf.pdf",
@@ -45,7 +40,8 @@ export default function App() {
       pdfSrc: "/certificates/pdf/certificado2Pdf.pdf",
     },
     {
-      title: "HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags",
+      title:
+        "HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags",
       issuer: "Alura",
       thumbnailSrc: "/certificates/images/certificado3.png",
       pdfSrc: "/certificates/pdf/certificado3Pdf.pdf",
@@ -75,7 +71,8 @@ export default function App() {
       pdfSrc: "/certificates/pdf/certificado7Pdf.pdf",
     },
     {
-      title: "HTML e CSS: trabalhando com responsividade e publicação de projetos",
+      title:
+        "HTML e CSS: trabalhando com responsividade e publicação de projetos",
       issuer: "Alura",
       thumbnailSrc: "/certificates/images/certificado8.png",
       pdfSrc: "/certificates/pdf/certificado8Pdf.pdf",
@@ -129,7 +126,8 @@ export default function App() {
       pdfSrc: "/certificates/pdf/certificado16Pdf.pdf",
     },
     {
-      title: "Node.js e terminal: dominando o ambiente de desenvolvimento front-end",
+      title:
+        "Node.js e terminal: dominando o ambiente de desenvolvimento front-end",
       issuer: "Alura",
       thumbnailSrc: "/certificates/images/certificado17.png",
       pdfSrc: "/certificates/pdf/certificado17Pdf.pdf",
@@ -145,37 +143,94 @@ export default function App() {
   const portfolioData = [
     {
       id: "proj1",
-      imageSrc: "/site1.webp",
-      title: "Website Corporativo Moderno",
-      technologies: ["React", "Vite", "CSS Grid", "Figma"],
+      imageSrc: "/projetoQuilha.png",
+      title: "Quilha Hub — Hub Criativo",
+      description:
+        "Site institucional para hub criativo especializado em branding, marketing digital, web design e direção criativa. Layout imersivo com animações fluidas, seções de serviços interativas e cases de sucesso.",
+      technologies: ["React", "Vite", "GSAP", "CSS3", "Vercel"],
+      liveUrl: "https://projeto-quilha-hub.vercel.app/",
+      repoUrl: "https://github.com/marciijunior",
     },
     {
       id: "proj2",
-      imageSrc: "/site2.webp",
-      title: "Plataforma de E-commerce",
-      technologies: ["JavaScript", "HTML5", "CSS3", "API Rest"],
+      imageSrc: "/projetoPortfolioLucasPicollo.png",
+      title: "Portfólio Lucas Picollo",
+      description:
+        "Portfólio pessoal desenvolvido para o cliente Lucas Picollo, com design moderno, navegação intuitiva e apresentação visual dos seus trabalhos e habilidades.",
+      technologies: ["React", "Vite", "CSS3", "Vercel"],
+      liveUrl: "https://portfolio-picollo.vercel.app/",
+      repoUrl: "https://github.com/marciijunior",
     },
     {
       id: "proj3",
-      imageSrc: "/site3.webp",
-      title: "Landing Page para Evento",
-      technologies: ["React", "GSAP", "Spline"],
+      imageSrc: "/projetoPortfolio.png",
+      title: "Portfólio Pessoal",
+      description:
+        "Meu próprio portfólio profissional com animações GSAP, design responsivo e seções interativas para apresentar projetos, certificados e tecnologias dominadas.",
+      technologies: ["React", "Vite", "GSAP", "CSS3", "Vercel"],
+      liveUrl: "https://marciojunior.dev/",
+      repoUrl: "https://github.com/marciijunior",
     },
     {
       id: "proj4",
-      imageSrc: "/site4.webp",
-      title: "Blog Pessoal Minimalista",
-      technologies: ["React", "CSS Flexbox", "UI/UX"],
+      imageSrc: "/projetoBadTube.png",
+      title: "BadTube",
+      description:
+        "Clone inspirado no YouTube com interface de vídeo, navegação por categorias e design responsivo focado em reproduzir a experiência de uma plataforma de streaming.",
+      technologies: ["React", "Vite", "CSS3", "JavaScript", "Vercel"],
+      liveUrl: "https://badtube.vercel.app/",
+      repoUrl: "https://github.com/marciijunior",
+    },
+    {
+      id: "proj5",
+      imageSrc: "/projetoMeuAmor.png",
+      title: "Meu Amor",
+      description:
+        "Página web interativa e afetiva, criada como presente personalizado com animações, galeria de fotos e mensagens especiais.",
+      technologies: ["React", "Vite", "CSS3", "Vercel"],
+      liveUrl: "https://meu-amor-flax.vercel.app/",
+      repoUrl: "https://github.com/marciijunior",
     },
   ];
 
   const techStackData = {
     frontend: [
-      "React", "Next.js", "HTML5", "CSS3", "JavaScript (ES6+)", "Three.js", "Tailwind CSS",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "GSAP",
+      "Three.js",
     ],
-    backend: ["Node.js", "Python", "SQL", "SQLite", "C++", "Pascal"],
+    backend: [
+      "Node.js",
+      "Express",
+      "Python",
+      "PostgreSQL",
+      "MongoDB",
+      "REST APIs",
+      "Prisma",
+    ],
+    design: [
+      "Figma",
+      "Adobe XD",
+      "Photoshop",
+      "UI/UX Design",
+      "Design System",
+      "Prototipagem",
+    ],
     ferramentas: [
-      "Git", "GitHub", "Figma", "Photoshop", "VS Code", "Vite", "Webpack", "NPM",
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Vite",
+      "Docker",
+      "Vercel",
+      "NPM",
+      "Linux",
     ],
   };
 
@@ -188,6 +243,7 @@ export default function App() {
     tecnologias: useRef(null),
     portfolio: useRef(null),
     certificados: useRef(null),
+    contato: useRef(null),
   };
 
   // useLayoutEffect garante que defaults + scrollerProxy rodem ANTES
@@ -277,7 +333,7 @@ export default function App() {
             onToggle: (self) => {
               if (self.isActive) setActiveSection(id);
             },
-          })
+          }),
         );
       }
     });
@@ -293,13 +349,13 @@ export default function App() {
       tl.fromTo(
         ".modal-overlay",
         { opacity: 0 },
-        { opacity: 1, duration: 0.3, ease: "power2.out" }
+        { opacity: 1, duration: 0.3, ease: "power2.out" },
       );
       tl.fromTo(
         ".modal-content",
         { scale: 0.8, opacity: 0, y: 50 },
         { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" },
-        "-=0.1"
+        "-=0.1",
       );
     }
   }, [selectedProject]);
@@ -322,10 +378,7 @@ export default function App() {
     <div className="app-container">
       <Sidebar onNavigate={handleNavigate} activeSection={activeSection} />
       <div className="content-wrapper" ref={scrollContainerRef}>
-        <Header
-          sectionRef={sectionRefs.inicio}
-          onNavigate={handleNavigate}
-        />
+        <Header sectionRef={sectionRefs.inicio} onNavigate={handleNavigate} />
         <main>
           <AboutMe sectionRef={sectionRefs.sobre} />
 
@@ -347,24 +400,59 @@ export default function App() {
             certificatesData={certificatesData}
           />
         </main>
-        <Footer />
+        <Footer sectionRef={sectionRefs.contato} />
 
         {selectedProject && (
           <div className="modal-overlay" onClick={handleCloseModal}>
-            <span className="modal-close" onClick={handleCloseModal}>X</span>
+            <button
+              className="modal-close"
+              onClick={handleCloseModal}
+              aria-label="Fechar modal"
+            >
+              &times;
+            </button>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <img
                 src={selectedProject.imageSrc}
                 alt={`Visualização do projeto ${selectedProject.title}`}
                 className="modal-img"
+                loading="lazy"
               />
               <div className="modal-details">
                 <h3 className="modal-title">{selectedProject.title}</h3>
-                <p className="modal-description">{selectedProject.description}</p>
+                <p className="modal-description">
+                  {selectedProject.description}
+                </p>
                 <div className="tech-tags-container">
                   {selectedProject.technologies.map((tech, index) => (
-                    <span key={index} className="tech-tag">{tech}</span>
+                    <span key={index} className="tech-tag">
+                      {tech}
+                    </span>
                   ))}
+                </div>
+                <div className="modal-links">
+                  {selectedProject.liveUrl &&
+                    selectedProject.liveUrl !== "#" && (
+                      <a
+                        href={selectedProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="modal-link-btn"
+                      >
+                        <i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
+                        Ver Site
+                      </a>
+                    )}
+                  {selectedProject.repoUrl && (
+                    <a
+                      href={selectedProject.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="modal-link-btn modal-link-secondary"
+                    >
+                      <i className="fa-brands fa-github"></i> Código Fonte
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

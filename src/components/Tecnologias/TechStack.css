@@ -67,11 +67,16 @@
   border-radius: 0.9375rem;
   font-size: 0.8rem;
   font-weight: 500;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+  cursor: default;
 }
 .tech-item:hover {
   background-color: var(--cor1);
   color: var(--cor5);
+  transform: scale(1.1) translateY(-3px);
 }
 @media (max-width: 1700px) {
   .tech-stack-section {

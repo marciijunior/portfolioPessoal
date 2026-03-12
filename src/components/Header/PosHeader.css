@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/* Font already imported in global.css */
 
 .divpremain {
   display: flex;
@@ -87,7 +87,7 @@
 }
 
 .btn {
-  background-color: var(--cor4);
+  background-color: var(--cor1);
   color: var(--cor3);
   transition: background-color 0.3s ease;
 }
@@ -124,7 +124,8 @@
 .btn2:hover {
   transition: all 0.2s;
   background-color: #292929;
-  box-shadow: inset 2px 2px 5px rgb(34, 34, 34),
+  box-shadow:
+    inset 2px 2px 5px rgb(34, 34, 34),
     inset -2px -2px 5px rgb(22, 22, 22);
   color: var(--cor3);
 }

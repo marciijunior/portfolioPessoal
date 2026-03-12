@@ -1,11 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Slider from "react-slick";
-import { useMediaQuery } from "../hooks/useMediaQuery";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./TechStack.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,10 +29,12 @@ export default function Tecnologias({ sectionRef, techStackData }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const title = containerRef.current?.querySelector('.titulo-tech');
-      const text = containerRef.current?.querySelector('.texto-tech');
-      const columns = containerRef.current?.querySelectorAll('.tech-category-column');
-      const techItems = containerRef.current?.querySelectorAll('.tech-item');
+      const title = containerRef.current?.querySelector(".titulo-tech");
+      const text = containerRef.current?.querySelector(".texto-tech");
+      const columns = containerRef.current?.querySelectorAll(
+        ".tech-category-column",
+      );
+      const techItems = containerRef.current?.querySelectorAll(".tech-item");
 
       if (title) {
         gsap.fromTo(
@@ -47,7 +50,7 @@ export default function Tecnologias({ sectionRef, techStackData }) {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
@@ -66,7 +69,7 @@ export default function Tecnologias({ sectionRef, techStackData }) {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
@@ -87,7 +90,7 @@ export default function Tecnologias({ sectionRef, techStackData }) {
               start: "top 70%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
@@ -107,27 +110,8 @@ export default function Tecnologias({ sectionRef, techStackData }) {
               start: "top 70%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
-
-        techItems.forEach((item) => {
-          item.addEventListener('mouseenter', () => {
-            gsap.to(item, {
-              scale: 1.1,
-              y: -3,
-              duration: 0.3,
-              ease: "back.out(1.7)",
-            });
-          });
-          item.addEventListener('mouseleave', () => {
-            gsap.to(item, {
-              scale: 1,
-              y: 0,
-              duration: 0.3,
-              ease: "power2.out",
-            });
-          });
-        });
       }
     }, containerRef);
 
@@ -158,7 +142,9 @@ export default function Tecnologias({ sectionRef, techStackData }) {
     >
       <div className="interligacao-tech">
         <h2 className="titulo-tech">Tecnologias e Ferramentas</h2>
-        <p className="texto-tech">As ferramentas e linguagens que mais utilizo.</p>
+        <p className="texto-tech">
+          As ferramentas e linguagens que mais utilizo.
+        </p>
       </div>
 
       <div className="tech-stack-container">
@@ -168,6 +154,7 @@ export default function Tecnologias({ sectionRef, techStackData }) {
               <Slider {...settings}>
                 {renderCategoryColumn("Frontend", techStackData.frontend)}
                 {renderCategoryColumn("Backend", techStackData.backend)}
+                {renderCategoryColumn("Design", techStackData.design)}
                 {renderCategoryColumn("Ferramentas", techStackData.ferramentas)}
               </Slider>
             </div>
@@ -176,6 +163,7 @@ export default function Tecnologias({ sectionRef, techStackData }) {
           <>
             {renderCategoryColumn("Frontend", techStackData.frontend)}
             {renderCategoryColumn("Backend", techStackData.backend)}
+            {renderCategoryColumn("Design", techStackData.design)}
             {renderCategoryColumn("Ferramentas", techStackData.ferramentas)}
           </>
         )}

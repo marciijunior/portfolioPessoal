@@ -1,11 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "./Certificates.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,9 +16,30 @@ export default function Certificados({ sectionRef, certificatesData }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const title = containerRef.current?.querySelector('.titulo-certificado');
-      const text = containerRef.current?.querySelector('.texto-certificado');
-      const swiperContainer = containerRef.current?.querySelector('.certificates-swiper');
+      const label = containerRef.current?.querySelector(".cert-label");
+      const title = containerRef.current?.querySelector(".cert-title");
+      const text = containerRef.current?.querySelector(".cert-subtitle");
+      const swiperContainer = containerRef.current?.querySelector(
+        ".certificates-swiper",
+      );
+
+      if (label) {
+        gsap.fromTo(
+          label,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      }
 
       if (title) {
         gsap.fromTo(
@@ -32,7 +55,7 @@ export default function Certificados({ sectionRef, certificatesData }) {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
@@ -51,7 +74,7 @@ export default function Certificados({ sectionRef, certificatesData }) {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
@@ -71,31 +94,11 @@ export default function Certificados({ sectionRef, certificatesData }) {
               start: "top 75%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
-      const cards = containerRef.current?.querySelectorAll('.certificate-card');
-      cards?.forEach((card) => {
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, {
-            y: -8,
-            scale: 1.02,
-            boxShadow: "0 15px 35px rgba(255, 77, 5, 0.15)",
-            duration: 0.4,
-            ease: "power2.out",
-          });
-        });
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, {
-            y: 0,
-            scale: 1,
-            boxShadow: "0 5px 15px rgba(0, 0, 0, 0.4)",
-            duration: 0.4,
-            ease: "power2.out",
-          });
-        });
-      });
+      // Hover effects handled via CSS transitions for better performance
     }, containerRef);
 
     return () => ctx.revert();
@@ -110,9 +113,10 @@ export default function Certificados({ sectionRef, certificatesData }) {
       }}
       className="container-certificados"
     >
-      <div className="interligacao-certificado">
-        <h2 className="titulo-certificado">Certificados e Cursos</h2>
-        <p className="texto-certificado">
+      <div className="cert-header">
+        <span className="cert-label">Formação</span>
+        <h2 className="cert-title">Certificados e Cursos</h2>
+        <p className="cert-subtitle">
           Algumas das minhas certificações e cursos mais recentes.
         </p>
       </div>
@@ -149,6 +153,7 @@ export default function Certificados({ sectionRef, certificatesData }) {
                     <img
                       src={cert.thumbnailSrc}
                       alt={`Certificado de ${cert.title}`}
+                      loading="lazy"
                     />
                   </div>
                   <div className="certificate-info">

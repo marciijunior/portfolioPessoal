@@ -1,0 +1,122 @@
+.invite-to-scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5em;
+  height: 10em;
+  background-color: #000000;
+  border: solid var(--cor2);
+  border-radius: 3.125em;
+  animation: pulsar-animacao 2s infinite;
+  position: relative;
+  top: 6.25em;
+  left: 8em;
+}
+
+.animationScrollInvite {
+  width: 1.25em;
+  height: 2.5em;
+  background-color: var(--cor2);
+  border-radius: 0.625em;
+  animation: scroll-animation 2s infinite;
+  position: relative;
+}
+
+@media (max-width: 1700px) {
+  .invite-to-scroll {
+    width: 4.75em;
+    height: 9em;
+    left: 7.5em;
+  }
+  .animationScrollInvite {
+    width: 1em;
+    height: 2em;
+  }
+}
+
+@media (max-width: 1500px) {
+  .invite-to-scroll {
+    top: 5em;
+    left: 7.3em;
+  }
+}
+
+@media (max-width: 1400px) {
+  .invite-to-scroll {
+    top: 3em;
+    left: 6em;
+  }
+}
+
+@media (max-width: 1300px) {
+  .invite-to-scroll {
+    width: 4em;
+    height: 8em;
+    left: 6.9em;
+  }
+  .animationScrollInvite {
+    width: 0.7em;
+    height: 1.1em;
+  }
+}
+
+@media (max-width: 1200px) {
+  .invite-to-scroll {
+    left: 6.8em;
+  }
+}
+
+@media (max-width: 1100px) {
+  .invite-to-scroll {
+    height: 7em;
+    left: 6.6em;
+  }
+  .animationScrollInvite {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+@media (max-width: 1000px) {
+  .invite-to-scroll {
+    display: none;
+  }
+}
+
+@keyframes scroll-animation {
+  0% {
+    transform: translateY(-2.5em);
+    opacity: 1;
+  }
+  15% {
+    transform: translateY(2.5em);
+    opacity: 0.5;
+  }
+  45% {
+    transform: translateY(0.9375em);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(2.5em);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-2.5em);
+    opacity: 1;
+  }
+}
+
+@keyframes pulsar-animacao {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}

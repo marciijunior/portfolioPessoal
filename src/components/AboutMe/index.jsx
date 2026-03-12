@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "../styles/AboutMe.css";
+
+import "./AboutMe.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,10 +11,15 @@ export default function AboutMe({ sectionRef }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const images = containerRef.current?.querySelectorAll('.about-me-image img');
-      const title = containerRef.current?.querySelector('.about-me-title');
-      const subtitle = containerRef.current?.querySelector('.about-me-subtitle');
-      const paragraphs = containerRef.current?.querySelectorAll('.about-me-text p:not(.about-me-subtitle)');
+      const images = containerRef.current?.querySelectorAll(
+        ".about-me-image img",
+      );
+      const title = containerRef.current?.querySelector(".about-me-title");
+      const subtitle =
+        containerRef.current?.querySelector(".about-me-subtitle");
+      const paragraphs = containerRef.current?.querySelectorAll(
+        ".about-me-text p:not(.about-me-subtitle)",
+      );
 
       const startGentleFloat = (image, direction = -1, duration = 3.6) => {
         gsap.to(image, {
@@ -42,7 +48,7 @@ export default function AboutMe({ sectionRef }) {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
 
         gsap.fromTo(
@@ -62,7 +68,7 @@ export default function AboutMe({ sectionRef }) {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
 
         gsap.fromTo(
@@ -82,7 +88,7 @@ export default function AboutMe({ sectionRef }) {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
@@ -101,7 +107,7 @@ export default function AboutMe({ sectionRef }) {
               start: "top 75%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
@@ -120,7 +126,7 @@ export default function AboutMe({ sectionRef }) {
               start: "top 75%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
@@ -140,7 +146,7 @@ export default function AboutMe({ sectionRef }) {
               start: "top 75%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
     }, containerRef);
@@ -149,26 +155,32 @@ export default function AboutMe({ sectionRef }) {
   }, []);
 
   return (
-    <section id="sobre" ref={(el) => {
-      containerRef.current = el;
-      if (sectionRef) sectionRef.current = el;
-    }}>
+    <section
+      id="sobre"
+      ref={(el) => {
+        containerRef.current = el;
+        if (sectionRef) sectionRef.current = el;
+      }}
+    >
       <div className="about-me-content">
         <div className="about-me-image">
           <img
             className="about-me-image1"
             src="/foto-about-me.webp"
             alt="Foto de Marcio Junior"
+            loading="lazy"
           />
           <img
             className="about-me-image2"
             src="/foto-about-me.webp"
             alt="Foto de Marcio Junior"
+            loading="lazy"
           />
           <img
             className="about-me-image3"
             src="/foto-about-me.webp"
             alt="Foto de Marcio Junior"
+            loading="lazy"
           />
         </div>
         <div className="about-me-text">

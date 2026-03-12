@@ -1,3 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --cor1: #ff4d05;
+  --cor2: #3b3b3b;
+  --cor3: #ffffff;
+  --cor5: #000000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cor5);
+  color: var(--cor3);
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ========== Global Scrollbar ========== */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -12,7 +30,7 @@
   border: 2px solid var(--cor5);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--cor4);
+  background: var(--cor1);
 }
 
 .feed-container::-webkit-scrollbar,
@@ -35,7 +53,7 @@
 
 .feed-container::-webkit-scrollbar-thumb:hover,
 .portfolio-img-container::-webkit-scrollbar-thumb:hover {
-  background: var(--cor4);
+  background: var(--cor1);
 }
 
 * {

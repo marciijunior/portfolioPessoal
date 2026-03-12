@@ -1,14 +1,16 @@
-import React, { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import '../styles/Sidebar.css';
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+
+import "./Sidebar.css";
 
 const navLinks = [
-  { id: 'inicio', icon: 'fa-house' },
-  { id: 'sobre', icon: 'fa-user' },
-  { id: 'jornada', icon: 'fa-route' },
-  { id: 'tecnologias', icon: 'fa-microchip' },
-  { id: 'portfolio', icon: 'fa-image' },
-  { id: 'certificados', icon: 'fa-certificate' },
+  { id: "inicio", icon: "fa-house" },
+  { id: "sobre", icon: "fa-user" },
+  { id: "jornada", icon: "fa-route" },
+  { id: "tecnologias", icon: "fa-microchip" },
+  { id: "portfolio", icon: "fa-image" },
+  { id: "certificados", icon: "fa-certificate" },
+  { id: "contato", icon: "fa-envelope" },
 ];
 
 export default function Sidebar({ onNavigate, activeSection }) {
@@ -31,10 +33,10 @@ export default function Sidebar({ onNavigate, activeSection }) {
           duration: 0.8,
           delay: 1.5,
           ease: "back.out(1.7)",
-        }
+        },
       );
 
-      const links = sidebarRef.current.querySelectorAll('.nav-link');
+      const links = sidebarRef.current.querySelectorAll(".nav-link");
       gsap.fromTo(
         links,
         { scale: 0, opacity: 0 },
@@ -45,7 +47,7 @@ export default function Sidebar({ onNavigate, activeSection }) {
           stagger: 0.08,
           delay: 1.8,
           ease: "back.out(2)",
-        }
+        },
       );
     }, sidebarRef);
 
@@ -56,9 +58,9 @@ export default function Sidebar({ onNavigate, activeSection }) {
     const activeLink = linkRefs.current[activeSection];
     if (activeLink && navRef.current) {
       const top = activeLink.offsetTop;
-      navRef.current.style.setProperty('--highlight-top', `${top}px`);
+      navRef.current.style.setProperty("--highlight-top", `${top}px`);
 
-      const icon = activeLink.querySelector('.nav-link i');
+      const icon = activeLink.querySelector(".nav-link i");
       if (icon) {
         gsap.fromTo(
           icon,
@@ -68,7 +70,7 @@ export default function Sidebar({ onNavigate, activeSection }) {
             scale: 1,
             duration: 0.4,
             ease: "back.out(1.7)",
-          }
+          },
         );
       }
     }
@@ -78,13 +80,10 @@ export default function Sidebar({ onNavigate, activeSection }) {
     <nav className="sidebar" ref={sidebarRef}>
       <ul className="sidebar-nav" ref={navRef}>
         {navLinks.map((link) => (
-          <li
-            key={link.id}
-            ref={(el) => (linkRefs.current[link.id] = el)}
-          >
+          <li key={link.id} ref={(el) => (linkRefs.current[link.id] = el)}>
             <a
               href={`#${link.id}`}
-              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
+              className={`nav-link ${activeSection === link.id ? "active" : ""}`}
               onClick={(e) => {
                 e.preventDefault();
                 onNavigate(link.id);

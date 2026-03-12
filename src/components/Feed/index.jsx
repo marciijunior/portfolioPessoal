@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGraduationCap,
@@ -10,7 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "../styles/Feed.css";
+
+import "./Feed.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,7 +44,7 @@ const PostCard = ({ post, index }) => {
         duration: 0.6,
         delay: index * 0.15,
         ease: "power2.out",
-      }
+      },
     );
   }, [index]);
 
@@ -52,7 +53,7 @@ const PostCard = ({ post, index }) => {
     setIsLiked(true);
     setLikeCount((prevCount) => Number(prevCount) + 1);
 
-    const likeBtn = cardRef.current?.querySelector('.like-button');
+    const likeBtn = cardRef.current?.querySelector(".like-button");
     if (likeBtn) {
       gsap.fromTo(
         likeBtn,
@@ -63,7 +64,7 @@ const PostCard = ({ post, index }) => {
           yoyo: true,
           repeat: 1,
           ease: "power2.out",
-        }
+        },
       );
     }
 
@@ -79,10 +80,7 @@ const PostCard = ({ post, index }) => {
       body: JSON.stringify({ postId: post.id }),
     })
       .then((res) => res.json())
-      .then((data) =>
-        console.log("Like registrado para o post", post.id, "Novo total:", data.newLikes)
-      )
-      .catch(console.error);
+      .catch(() => {});
   };
 
   return (
@@ -97,7 +95,10 @@ const PostCard = ({ post, index }) => {
       <div className="post-content">
         <div className="post-content-title">
           {iconMap[post.icon] && (
-            <FontAwesomeIcon icon={iconMap[post.icon]} className="post-title-icon" />
+            <FontAwesomeIcon
+              icon={iconMap[post.icon]}
+              className="post-title-icon"
+            />
           )}
           <h3 className="post-title">{post.title}</h3>
         </div>
@@ -147,6 +148,7 @@ export default function Feed() {
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [loadingYears, setLoadingYears] = useState(true);
+  const [error, setError] = useState(null);
 
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -157,7 +159,9 @@ export default function Feed() {
     fetch(baseApiUrl)
       .then((res) => res.json())
       .then((data) => {
-        const years = Array.isArray(data) ? data.map((year) => year.toString()) : [];
+        const years = Array.isArray(data)
+          ? data.map((year) => year.toString())
+          : [];
         setAvailableYears(years);
 
         if (years.includes("2025")) {
@@ -168,7 +172,10 @@ export default function Feed() {
 
         setLoadingYears(false);
       })
-      .catch(console.error);
+      .catch(() => {
+        setLoadingYears(false);
+        setError("Não foi possível carregar os anos.");
+      });
   }, []);
 
   useEffect(() => {
@@ -180,8 +187,8 @@ export default function Feed() {
         setPosts(data);
         setLoadingPosts(false);
       })
-      .catch((error) => {
-        console.error("Erro ao buscar posts:", error);
+      .catch(() => {
+        setError("Erro ao carregar os posts. Tente novamente.");
         setLoadingPosts(false);
       });
   }, [selectedYear]);
@@ -201,7 +208,7 @@ export default function Feed() {
             start: "top 80%",
             toggleActions: "play none none none",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -218,7 +225,7 @@ export default function Feed() {
             start: "top 80%",
             toggleActions: "play none none none",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -235,7 +242,7 @@ export default function Feed() {
             start: "top 80%",
             toggleActions: "play none none none",
           },
-        }
+        },
       );
     }, sectionRef);
 
@@ -244,7 +251,7 @@ export default function Feed() {
 
   useEffect(() => {
     if (!loadingYears && timelineRef.current) {
-      const buttons = timelineRef.current.querySelectorAll('.timeline-year');
+      const buttons = timelineRef.current.querySelectorAll(".timeline-year");
       gsap.fromTo(
         buttons,
         { scale: 0, opacity: 0 },
@@ -254,7 +261,7 @@ export default function Feed() {
           duration: 0.5,
           stagger: 0.08,
           ease: "back.out(1.7)",
-        }
+        },
       );
     }
   }, [loadingYears]);
@@ -264,7 +271,8 @@ export default function Feed() {
       <header className="feed-header">
         <h1 ref={titleRef}>Minha Jornada</h1>
         <p className="feed-description" ref={descRef}>
-          Esta seção funciona como um diário profissional. Deixe seu apoio anônimo!
+          Esta seção funciona como um diário profissional. Deixe seu apoio
+          anônimo!
         </p>
         <nav className="mini-timeline" ref={timelineRef}>
           {loadingYears ? (
@@ -278,7 +286,7 @@ export default function Feed() {
             availableYears.map((year) => (
               <button
                 key={year}
-                className={`timeline-year ${year == selectedYear ? "active" : ""}`}
+                className={`timeline-year ${year === selectedYear ? "active" : ""}`}
                 onClick={() => setSelectedYear(year.toString())}
               >
                 {year}
@@ -288,11 +296,29 @@ export default function Feed() {
         </nav>
       </header>
       <main className="feed-container">
-        {loadingPosts ? (
+        {error ? (
+          <div className="feed-error">
+            <i className="fa-solid fa-triangle-exclamation"></i>
+            <p>{error}</p>
+            <button
+              onClick={() => {
+                setError(null);
+                setSelectedYear(selectedYear);
+              }}
+              className="timeline-year active"
+            >
+              Tentar novamente
+            </button>
+          </div>
+        ) : loadingPosts ? (
           <>
             <SkeletonPost />
             <SkeletonPost />
           </>
+        ) : posts.length === 0 ? (
+          <div className="feed-empty">
+            <p>Nenhum post encontrado para {selectedYear}.</p>
+          </div>
         ) : (
           posts.map((post, index) => (
             <PostCard key={post.id} post={post} index={index} />
