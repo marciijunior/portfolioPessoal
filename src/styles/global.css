@@ -2,6 +2,7 @@
 
 :root {
   --cor1: #ff4d05;
+  --cor1-rgb: 255, 77, 5;
   --cor2: #3b3b3b;
   --cor3: #ffffff;
   --cor5: #000000;
@@ -10,8 +11,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--cor5);
-  color: var(--cor3);
+  background-color: var(--cor3);
+  color: var(--cor2);
   font-family: "Montserrat", sans-serif;
 }
 
@@ -33,25 +34,21 @@ body {
   background: var(--cor1);
 }
 
-.feed-container::-webkit-scrollbar,
 .portfolio-img-container::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-.feed-container::-webkit-scrollbar-track,
 .portfolio-img-container::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.feed-container::-webkit-scrollbar-thumb,
 .portfolio-img-container::-webkit-scrollbar-thumb {
   background: var(--cor3);
   border-radius: 10px;
   border: none;
 }
 
-.feed-container::-webkit-scrollbar-thumb:hover,
 .portfolio-img-container::-webkit-scrollbar-thumb:hover {
   background: var(--cor1);
 }
@@ -61,7 +58,6 @@ body {
   scrollbar-color: var(--cor2) var(--cor5);
 }
 
-.feed-container,
 .portfolio-img-container {
   scrollbar-width: thin;
   scrollbar-color: var(--cor3) transparent;

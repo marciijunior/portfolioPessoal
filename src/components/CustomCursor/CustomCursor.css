@@ -1,0 +1,71 @@
+/* ── Custom Cursor ── */
+
+/* Dot: centro com efeito negativo (difference) */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 99999;
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    margin 0.2s ease;
+}
+
+.custom-cursor-dot.is-hovering {
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+}
+
+/* Ring: borda controlada pela roda de cores (--cor1) */
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  background: transparent;
+  pointer-events: none;
+  z-index: 99998;
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
+  opacity: 0.7;
+}
+
+.custom-cursor-ring.is-hovering {
+  opacity: 1;
+  border-width: 2px;
+}
+
+/* Esconde o cursor nativo globalmente */
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
+/* Esconde em telas touch (sem mouse) */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+}

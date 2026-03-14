@@ -1,266 +1,291 @@
-@property --deg {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0deg;
-}
+/* ════════════════════════════════════════
+   ABOUT ME  –  Dark Cinematic v3
+   ════════════════════════════════════════ */
 
-.about-me-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8rem 30rem 0 30rem;
-  gap: 2rem;
-}
-
-.about-me-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* ── Section wrapper ── */
+section#sobre {
   position: relative;
-  width: 22.5rem;
-  height: 22.5rem;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 4rem 5rem;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: #f5f5f5;
 }
 
-.about-me-image1 {
-  padding: 10px 0 0 0;
-  filter: blur(0.2rem);
+/* noise sutil */
+section#sobre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
 }
 
-.about-me-image2 {
-  padding: 0px 0 15px 0;
-  filter: blur(0.1rem);
-}
-
-.about-me-image3 {
-  padding: 20px 0 0 0;
-}
-
-@keyframes autoRotate {
-  to {
-    --deg: 360deg;
-  }
-}
-
-.about-me-image img {
-  display: block;
+/* ══════════════ GLOW LINE ══════════════ */
+.about-glow-line {
+  position: relative;
   z-index: 1;
-  width: 10vh;
-  height: auto;
-  object-fit: cover;
-  border-radius: 0.625rem;
+  width: 100%;
+  max-width: 1100px;
+  height: 1px;
+  margin-bottom: 3rem;
+  transform-origin: left center;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--cor1) 30%,
+    var(--cor1) 70%,
+    transparent 100%
+  );
+  opacity: 0.4;
 }
 
-.about-me-text {
+/* ══════════════ LABEL EDITORIAL ══════════════ */
+.about-label {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto 2.5rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ══════════════ SPLIT LAYOUT ══════════════ */
+.about-split {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: flex-start;
-  flex-direction: column;
-  flex: 1.2;
+  gap: 4rem;
+  max-width: 1100px;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+/* ── Fotos com blur ── */
+.about-photo-col {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  width: 300px;
+  gap: 0.6rem;
 }
 
-.about-me-text p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #b0b0b0;
+.about-photo {
+  display: block;
+  width: 8rem;
+  height: 20rem;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 10px;
 }
 
-.about-me-title {
-  font-size: 2rem;
-  font-weight: 300;
+.about-photo-1 {
+  filter: blur(3px);
+  opacity: 0.5;
+  padding-top: 0px;
+}
+
+.about-photo-2 {
+  filter: blur(1.5px);
+  opacity: 0.7;
+  padding-bottom: 0px;
+}
+
+.about-photo-3 {
+  filter: none;
+  opacity: 1;
+  padding-top: 0px;
+}
+
+/* ── Texto ── */
+.about-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding-top: 0.5rem;
+}
+
+/* Quote */
+.about-quote {
+  position: relative;
+  margin: 0 0 0.8rem 0;
+  padding: 0;
+  font-family: "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  color: #f5f5f5;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.about-quote-mark {
+  font-family: "Modak", cursive;
+  font-size: 3rem;
   color: var(--cor1);
-  margin-bottom: 0.9375rem;
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-right: 0.15rem;
+  opacity: 0.7;
 }
 
-.about-me-subtitle {
-  border-left: 0.1875rem solid var(--cor1);
-  padding-left: 0.9375rem;
+/* Parágrafos */
+.about-paragraph {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
 }
 
-@media (max-width: 1700px) {
-  .about-me-content {
-    padding: 8rem 25rem 0 25rem;
-  }
-  .about-me-image img {
-    width: 18rem;
-    height: 18rem;
-  }
-  .about-me-text p {
-    font-size: 1rem;
-  }
-  .about-me-title {
-    font-size: 2rem;
-  }
+/* ══════════════ BENTO GRID ══════════════ */
+.about-bento {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 1100px;
+  width: 100%;
 }
-@media (max-width: 1600px) {
-  .about-me-content {
-    padding: 8rem 22rem 0 22rem;
-  }
+
+.about-bento-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 1.6rem 1.4rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition:
+    border-color 0.3s,
+    background 0.3s;
 }
-@media (max-width: 1500px) {
-  .about-me-content {
-    padding: 5rem 20rem 0 20rem;
-  }
-  .about-me-title {
-    font-size: 1.8rem;
-  }
-  .about-me-text p {
-    font-size: 0.9rem;
-  }
+
+.about-bento-card:hover {
+  border-color: rgba(var(--cor1-rgb), 0.25);
+  background: rgba(var(--cor1-rgb), 0.04);
 }
-@media (max-width: 1400px) {
-  .about-me-content {
-    padding: 8rem 20rem 0 20rem;
-  }
+
+.about-bento-icon {
+  font-size: 1.1rem;
+  color: var(--cor1);
+  opacity: 0.8;
 }
-@media (max-width: 1300px) {
-  .about-me-content {
-    padding: 8rem 18rem 0 18rem;
-  }
-  .about-me-title {
-    font-size: 1.6rem;
-  }
-  .about-me-text p {
-    font-size: 0.8rem;
-  }
+
+.about-bento-value {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #f5f5f5;
+  letter-spacing: 0.01em;
 }
-@media (max-width: 1200px) {
-  .about-me-content {
-    padding: 8rem 13rem 0 13rem;
-  }
+
+.about-bento-key {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
-@media (max-width: 1100px) {
-  .about-me-content {
-    padding: 8rem 11rem 0 11rem;
-  }
-  .about-me-image {
-    width: 18rem;
-    height: 18rem;
-  }
-  .about-me-image img {
-    width: 15rem;
-    height: 15rem;
-  }
-}
-@media (max-width: 1000px) {
-  .about-me-image {
-    width: 16rem;
-    height: 16rem;
-  }
-  .about-me-image img {
-    width: 14rem;
-    height: 14rem;
-  }
-  .about-me-title {
-    font-size: 1.4rem;
-  }
-  .about-me-text p {
-    font-size: 0.7rem;
-  }
-}
+
+/* ══════════════ RESPONSIVO ══════════════ */
+
 @media (max-width: 900px) {
-  .about-me-image {
-    width: 14rem;
-    height: 14rem;
+  section#sobre {
+    padding: 5rem 2rem 4rem;
   }
-  .about-me-image img {
-    width: 12rem;
-    height: 12rem;
+
+  .about-split {
+    gap: 2.5rem;
   }
-  .about-me-content {
-    padding: 0 7rem;
+
+  .about-photo-col {
+    width: 240px;
   }
-}
-@media (max-width: 800px) {
-  .about-me-image {
-    width: 12rem;
-    height: 12rem;
+
+  .about-photo {
+    width: 6.5rem;
+    height: 9rem;
   }
-  .about-me-image img {
-    width: 10rem;
-    height: 10rem;
+
+  .about-quote {
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   }
-  .about-me-title {
-    font-size: 1.2rem;
-  }
-  .about-me-text p {
-    line-height: 1.2;
+
+  .about-bento {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 700px) {
-  .about-me-content {
-    padding: 0 6rem;
-  }
-  .about-me-image {
-    width: 12rem;
-    height: 12rem;
-  }
-  .about-me-image img {
-    width: 10rem;
-    height: 10rem;
-  }
-  .about-me-title {
-    font-size: 1.2rem;
-  }
-  .about-me-text p {
-    line-height: 1.2;
-  }
-}
+
 @media (max-width: 600px) {
-  .about-me-content {
-    padding: 0 2rem;
+  section#sobre {
+    padding: 3.5rem 1rem 3rem;
   }
-  .about-me-image {
-    width: 10rem;
-    height: 10rem;
+
+  .about-glow-line {
+    margin-bottom: 2rem;
   }
-  .about-me-image img {
-    width: 9rem;
-    height: 9rem;
+
+  .about-label {
+    margin-bottom: 1.8rem;
   }
-  .about-me-title {
-    font-size: 1.1rem;
+
+  .about-split {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
   }
-}
-@media (max-width: 500px) {
-  .about-me-content {
-    padding: 0 2rem;
+
+  .about-photo-col {
+    width: 120px;
+    flex-shrink: 0;
   }
-  .about-me-image {
-    width: 10rem;
-    height: 10rem;
+
+  .about-photo {
+    width: 3.2rem;
+    height: 5.5rem;
   }
-  .about-me-image img {
-    width: 9rem;
-    height: 9rem;
+
+  .about-text-col {
+    text-align: left;
+    align-items: flex-start;
+    padding-top: 0;
   }
-  .about-me-title {
-    font-size: 1rem;
-    margin: 0;
+
+  .about-quote {
+    text-align: left;
   }
-  .about-me-text p {
-    line-height: 1.3;
-    font-size: 0.75rem;
+
+  .about-paragraph {
+    font-size: 0.88rem;
   }
-}
-@media (max-width: 400px) {
-  .about-me-content {
-    padding: 0 1rem;
-    gap: 1rem;
+
+  .about-bento {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
   }
-  .about-me-image {
-    width: 9rem;
-    height: 9rem;
+
+  .about-bento-card {
+    padding: 1.2rem 1rem;
   }
-  .about-me-image img {
-    width: 8rem;
-    height: 8rem;
-  }
-  .about-me-title {
-    font-size: 1rem;
-  }
-  .about-me-text p {
-    line-height: 1.3;
-    font-size: 0.7rem;
+
+  .about-bento-value {
+    font-size: 0.8rem;
   }
 }

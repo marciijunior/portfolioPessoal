@@ -8,8 +8,8 @@ import {
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
+import CustomCursor from "./components/CustomCursor";
 import AboutMe from "./components/AboutMe";
 import Tecnologias from "./components/Tecnologias";
 import Portfolio from "./components/Portfolio";
@@ -376,7 +376,7 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <Sidebar onNavigate={handleNavigate} activeSection={activeSection} />
+      <CustomCursor />
       <div className="content-wrapper" ref={scrollContainerRef}>
         <Header sectionRef={sectionRefs.inicio} onNavigate={handleNavigate} />
         <main>

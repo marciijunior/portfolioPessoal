@@ -11,144 +11,94 @@ export default function AboutMe({ sectionRef }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const images = containerRef.current?.querySelectorAll(
-        ".about-me-image img",
-      );
-      const title = containerRef.current?.querySelector(".about-me-title");
-      const subtitle =
-        containerRef.current?.querySelector(".about-me-subtitle");
-      const paragraphs = containerRef.current?.querySelectorAll(
-        ".about-me-text p:not(.about-me-subtitle)",
-      );
-
-      const startGentleFloat = (image, direction = -1, duration = 3.6) => {
-        gsap.to(image, {
-          y: direction * 4,
-          duration,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-        });
+      const trigger = {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
       };
 
-      if (images?.length) {
+      /* section label */
+      gsap.fromTo(
+        ".about-label",
+        { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power2.out", scrollTrigger: trigger },
+      );
+
+      /* fotos com blur */
+      const photos = containerRef.current?.querySelectorAll(".about-photo");
+      if (photos?.length) {
         gsap.fromTo(
-          images[0],
-          { y: 100, opacity: 0, scale: 0.8, rotate: -5 },
+          photos[0],
+          { y: 80, opacity: 0, scale: 0.85, rotate: -4 },
           {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            duration: 1,
-            ease: "power3.out",
-            onComplete: () => startGentleFloat(images[0], -1, 3.6),
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
+            y: 0, opacity: 1, scale: 1, rotate: 0,
+            duration: 1, ease: "power3.out",
+            onComplete: () => gsap.to(photos[0], { y: -4, duration: 3.6, repeat: -1, yoyo: true, ease: "sine.inOut" }),
+            scrollTrigger: trigger,
           },
         );
-
         gsap.fromTo(
-          images[1],
-          { y: -100, opacity: 0, scale: 0.8, rotate: 3 },
+          photos[1],
+          { y: -80, opacity: 0, scale: 0.85, rotate: 3 },
           {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            duration: 1,
-            delay: 0.15,
-            ease: "power3.out",
-            onComplete: () => startGentleFloat(images[1], 1, 4),
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
+            y: 0, opacity: 1, scale: 1, rotate: 0,
+            duration: 1, delay: 0.15, ease: "power3.out",
+            onComplete: () => gsap.to(photos[1], { y: 4, duration: 4, repeat: -1, yoyo: true, ease: "sine.inOut" }),
+            scrollTrigger: trigger,
           },
         );
-
         gsap.fromTo(
-          images[2],
-          { y: 100, opacity: 0, scale: 0.8, rotate: -3 },
+          photos[2],
+          { y: 80, opacity: 0, scale: 0.85, rotate: -3 },
           {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            duration: 1,
-            delay: 0.3,
-            ease: "power3.out",
-            onComplete: () => startGentleFloat(images[2], -1, 4.4),
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
+            y: 0, opacity: 1, scale: 1, rotate: 0,
+            duration: 1, delay: 0.3, ease: "power3.out",
+            onComplete: () => gsap.to(photos[2], { y: -4, duration: 4.4, repeat: -1, yoyo: true, ease: "sine.inOut" }),
+            scrollTrigger: trigger,
           },
         );
       }
 
-      if (title) {
-        gsap.fromTo(
-          title,
-          { x: 80, opacity: 0, skewX: -5 },
-          {
-            x: 0,
-            opacity: 1,
-            skewX: 0,
-            duration: 0.9,
-            ease: "expo.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 75%",
-              toggleActions: "play none none none",
-            },
-          },
-        );
-      }
+      /* quote */
+      gsap.fromTo(
+        ".about-quote",
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.9, delay: 0.2, ease: "expo.out", scrollTrigger: trigger },
+      );
 
-      if (subtitle) {
-        gsap.fromTo(
-          subtitle,
-          { x: 60, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.8,
-            delay: 0.2,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 75%",
-              toggleActions: "play none none none",
-            },
-          },
-        );
-      }
+      /* parágrafos */
+      gsap.fromTo(
+        ".about-paragraph",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.15, delay: 0.4, ease: "power2.out", scrollTrigger: trigger },
+      );
 
-      if (paragraphs?.length) {
-        gsap.fromTo(
-          paragraphs,
-          { x: 60, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.2,
-            delay: 0.4,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 75%",
-              toggleActions: "play none none none",
-            },
+      /* bento cards */
+      gsap.fromTo(
+        ".about-bento-card",
+        { y: 40, opacity: 0, scale: 0.95 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          stagger: 0.1,
+          delay: 0.3,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".about-bento",
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
-        );
-      }
+        },
+      );
+
+      /* linha gradient pulse */
+      gsap.fromTo(
+        ".about-glow-line",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 1.2, ease: "expo.out", scrollTrigger: trigger },
+      );
     }, containerRef);
 
     return () => ctx.revert();
@@ -162,42 +112,82 @@ export default function AboutMe({ sectionRef }) {
         if (sectionRef) sectionRef.current = el;
       }}
     >
-      <div className="about-me-content">
-        <div className="about-me-image">
+      {/* ── Linha glow decorativa ── */}
+      <div className="about-glow-line"></div>
+
+      {/* ── Label editorial ── */}
+      <span className="about-label">02 / Sobre</span>
+
+      {/* ── Split: foto + texto ── */}
+      <div className="about-split">
+        {/* Fotos com blur */}
+        <div className="about-photo-col">
           <img
-            className="about-me-image1"
             src="/foto-about-me.webp"
             alt="Foto de Marcio Junior"
+            className="about-photo about-photo-1"
             loading="lazy"
           />
           <img
-            className="about-me-image2"
             src="/foto-about-me.webp"
             alt="Foto de Marcio Junior"
+            className="about-photo about-photo-2"
             loading="lazy"
           />
           <img
-            className="about-me-image3"
             src="/foto-about-me.webp"
             alt="Foto de Marcio Junior"
+            className="about-photo about-photo-3"
             loading="lazy"
           />
         </div>
-        <div className="about-me-text">
-          <h2 className="about-me-title">Sobre Mim</h2>
-          <p className="about-me-subtitle">
-            Estudante de Engenharia de Computação, 23 anos.
+
+        {/* Conteúdo lado direito */}
+        <div className="about-text-col">
+          {/* Quote destaque */}
+          <blockquote className="about-quote">
+            <span className="about-quote-mark">&ldquo;</span>
+            Minha curiosidade está em entender como as coisas se conectam e
+            funcionam por dentro.
+          </blockquote>
+
+          <p className="about-paragraph">
+            Meu nome é Márcio, tenho 23 anos e sou estudante de Engenharia de
+            Computação. O apelo visual das coisas sempre me fascinou, mas o que
+            realmente me move é a engenharia por trás delas.
           </p>
-          <p>
-            Meu nome é Márcio. Desde sempre, o apelo visual das coisas me
-            fascina, mas minha verdadeira curiosidade está em entender como elas
-            se conectam e funcionam por dentro.
-          </p>
-          <p>
-            Meu objetivo é transformar essa visão em realidade, desenvolvendo
-            projetos onde a engenharia robusta e o design cuidadoso andam lado a
+          <p className="about-paragraph">
+            Meu objetivo é transformar essa visão em realidade — criando
+            projetos onde código robusto e design cuidadoso caminham lado a
             lado.
           </p>
+        </div>
+      </div>
+
+      {/* ── Bento grid ── */}
+      <div className="about-bento">
+        <div className="about-bento-card about-bento-location">
+          <i className="fa-solid fa-location-dot about-bento-icon"></i>
+          <span className="about-bento-value">Araçatuba, Brasil</span>
+          <span className="about-bento-key">Localização</span>
+        </div>
+
+        <div className="about-bento-card about-bento-education">
+          <i className="fa-solid fa-graduation-cap about-bento-icon"></i>
+          <span className="about-bento-value">Eng. de Computação</span>
+          <span className="about-bento-key">Em Formação</span>
+        </div>
+
+        <div className="about-bento-card about-bento-focus">
+          <i className="fa-solid fa-crosshairs about-bento-icon"></i>
+          <span className="about-bento-value">Fullstack & UI/UX</span>
+          <span className="about-bento-key">Foco atual</span>
+        </div>
+
+        <div className="about-bento-card about-bento-stack">
+          <i className="fa-solid fa-layer-group about-bento-icon"></i>
+          <span className="about-bento-value">React · JavaScript · Figma</span>
+          <span className="about-bento-key">Stack favorita</span>
         </div>
       </div>
     </section>
