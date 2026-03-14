@@ -307,7 +307,7 @@ export default function Feed() {
           Cada passo é parte da construção.
         </blockquote>
         <p className="jornada-desc" ref={descRef}>
-          Um diário da minha evolução profissional — marcos, aprendizados e
+          Um diário da minha evolução profissional. Marcos, aprendizados e
           conquistas ao longo dos anos. Deixe seu apoio anônimo!
         </p>
       </div>
