@@ -147,8 +147,7 @@ export default function AboutMe({ sectionRef }) {
           {/* Quote destaque */}
           <blockquote className="about-quote">
             <span className="about-quote-mark">&ldquo;</span>
-            Minha curiosidade está em entender como as coisas se conectam e
-            funcionam por dentro.
+            Sou fascinado pelo design!
           </blockquote>
 
           <p className="about-paragraph">
@@ -157,7 +156,7 @@ export default function AboutMe({ sectionRef }) {
             realmente me move é a engenharia por trás delas.
           </p>
           <p className="about-paragraph">
-            Meu objetivo é transformar essa visão em realidade — criando
+            Meu objetivo é transformar essa visão em realidade, criando
             projetos onde código robusto e design cuidadoso caminham lado a
             lado.
           </p>

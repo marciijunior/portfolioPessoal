@@ -537,11 +537,11 @@ export default function Header({ sectionRef, onNavigate }) {
                   </span>
                 </a>
                 <a
-                  href="#jornada"
+                  href="#portfolio"
                   className="btn-hero-ghost"
                   onClick={(e) => {
                     e.preventDefault();
-                    onNavigate("jornada");
+                    onNavigate("portfolio");
                   }}
                 >
                   Explorar Projetos
