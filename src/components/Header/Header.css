@@ -456,7 +456,6 @@ header#inicio::before {
   flex-shrink: 0;
   width: 42%;
   overflow: visible;
-  z-index: 3;
 }
 
 /* ── Linhas geométricas com glow atrás do retrato ── */
@@ -468,7 +467,7 @@ header#inicio::before {
   width: 70%;
   height: 70%;
   transform: translate(-50%, -50%);
-  z-index: 0;
+  z-index: 1;
   border: 2px solid rgba(var(--cor1-rgb), 0.4);
   border-radius: 50%;
   box-shadow:
@@ -486,7 +485,7 @@ header#inicio::before {
   width: 85%;
   height: 85%;
   transform: translate(-50%, -50%) rotate(45deg);
-  z-index: 0;
+  z-index: 1;
   border: 1px solid rgba(var(--cor1-rgb), 0.15);
   border-radius: 50%;
   box-shadow: 0 0 40px rgba(var(--cor1-rgb), 0.08);
@@ -495,7 +494,7 @@ header#inicio::before {
 
 .hero-portrait-img {
   position: relative;
-  z-index: 1000;
+  z-index: 3;
   width: 100%;
   height: 100%;
   object-fit: cover;
