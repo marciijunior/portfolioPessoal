@@ -456,6 +456,7 @@ header#inicio::before {
   flex-shrink: 0;
   width: 42%;
   overflow: visible;
+  z-index: 3;
 }
 
 /* ── Linhas geométricas com glow atrás do retrato ── */
