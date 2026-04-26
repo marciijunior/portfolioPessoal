@@ -769,13 +769,14 @@ header#inicio::before {
   .hero-portrait-wrapper::after {
     opacity: 0.6;
     top: 45%;
-    width: 55%;
-    height: 55%;
+    width: min(60vw, 45vh);
+    height: min(60vw, 45vh);
+    aspect-ratio: 1 / 1;
   }
 
   .hero-portrait-wrapper::after {
-    width: 68%;
-    height: 68%;
+    width: min(72vw, 55vh);
+    height: min(72vw, 55vh);
   }
 
   .hero-available {
@@ -853,13 +854,14 @@ header#inicio::before {
   .hero-portrait-wrapper::after {
     opacity: 0.5;
     top: 40%;
-    width: 50%;
-    height: 50%;
+    width: min(55vw, 35vh);
+    height: min(55vw, 35vh);
+    aspect-ratio: 1 / 1;
   }
 
   .hero-portrait-wrapper::after {
-    width: 62%;
-    height: 62%;
+    width: min(68vw, 42vh);
+    height: min(68vw, 42vh);
   }
 
   .hero-outline-text,
@@ -943,5 +945,90 @@ header#inicio::before {
 @media (max-height: 900px) and (max-width: 900px) {
   .hero-portrait-wrapper {
     height: 30vh;
+  }
+}
+
+/* ── Color panel responsivo (mobile) ── */
+@media (max-width: 768px) {
+  .color-panel {
+    /* Sobrescreve o posicionamento inline do JS com !important */
+    top: 50% !important;
+    left: 50% !important;
+    width: 92vw !important;
+    max-width: 92vw !important;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 1.4rem;
+    /* Centraliza e ignora o fill-mode da animação base */
+    transform: translate(-50%, -50%) !important;
+    transform-origin: center center;
+    /* Animação própria que não conflita com o transform de centralização */
+    animation: colorPanelInMobile 0.25s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  }
+
+  /* Esconde a seta lateral */
+  .color-panel::before {
+    display: none;
+  }
+
+  /* Áreas interativas maiores para uso confortável no toque */
+  .color-panel__sv-area {
+    height: 44vh;
+    max-height: 320px;
+  }
+
+  .color-panel__sv-thumb {
+    width: 22px;
+    height: 22px;
+    border-width: 3px;
+  }
+
+  .color-panel__hue-bar {
+    height: 22px;
+    border-radius: 11px;
+  }
+
+  .color-panel__hue-thumb {
+    width: 26px;
+    height: 26px;
+    border-width: 3px;
+  }
+
+  .color-panel__active-preview {
+    width: 34px;
+    height: 34px;
+  }
+
+  .color-panel__active-hex {
+    font-size: 0.95rem;
+  }
+
+  .color-panel__swatches {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.7rem;
+  }
+
+  .color-panel__swatch {
+    width: 100%;
+    max-width: 44px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
+
+  .color-panel__close {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+}
+
+@keyframes colorPanelInMobile {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }

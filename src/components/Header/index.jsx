@@ -243,7 +243,7 @@ export default function Header({ sectionRef, onNavigate }) {
       {/* ── Navbar ── */}
       <nav className="navbar" ref={navRef} aria-label="Navegação principal">
         <div className="nav-logo">
-          <img src="/logo.png" alt="Logo Marcio Junior" />
+          <img src="/logo.webp" alt="Logo Marcio Junior" />
         </div>
 
         <ul className="nav-links">
@@ -384,10 +384,20 @@ export default function Header({ sectionRef, onNavigate }) {
                   onClick={() => {
                     if (!panelOpen && colorWheelRef.current) {
                       const rect = colorWheelRef.current.getBoundingClientRect();
-                      setPanelPos({
-                        top: rect.top + rect.height / 2,
-                        left: rect.right + 16,
-                      });
+                      const vw = window.innerWidth;
+                      const vh = window.innerHeight;
+                      const isMobile = vw <= 768;
+
+                      if (isMobile) {
+                        // Painel cobre quase toda a tela e é centralizado via
+                        // transform: translate(-50%, -50%) no CSS.
+                        setPanelPos({ top: vh / 2, left: vw / 2 });
+                      } else {
+                        setPanelPos({
+                          top: rect.top + rect.height / 2,
+                          left: rect.right + 16,
+                        });
+                      }
                     }
                     setPanelOpen((v) => !v);
                   }}
@@ -554,7 +564,7 @@ export default function Header({ sectionRef, onNavigate }) {
           {/* Lado direito: retrato full-height */}
           <div className="hero-portrait-wrapper" ref={portraitRef}>
             <img
-              src="/fotoPessoal.png"
+              src="/fotoPessoal.webp"
               alt="Foto de Marcio Junior"
               className="hero-portrait-img"
             />

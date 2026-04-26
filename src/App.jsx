@@ -30,112 +30,112 @@ export default function App() {
       title:
         "Acessibilidade no HTML: escrevendo códigos semânticos para inclusão",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado1.png",
+      thumbnailSrc: "/certificates/images/certificado1.webp",
       pdfSrc: "/certificates/pdf/certificado1Pdf.pdf",
     },
     {
       title: "Começando em Programação: carreira e primeiros passos",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado2.png",
+      thumbnailSrc: "/certificates/images/certificado2.webp",
       pdfSrc: "/certificates/pdf/certificado2Pdf.pdf",
     },
     {
       title:
         "HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado3.png",
+      thumbnailSrc: "/certificates/images/certificado3.webp",
       pdfSrc: "/certificates/pdf/certificado3Pdf.pdf",
     },
     {
       title: "HTML e CSS: cabeçalho, footer e variáveis CSS",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado4.png",
+      thumbnailSrc: "/certificates/images/certificado4.webp",
       pdfSrc: "/certificates/pdf/certificado4Pdf.pdf",
     },
     {
       title: "HTML e CSS: Classes, posicionamento e Flexbox",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado5.png",
+      thumbnailSrc: "/certificates/images/certificado5.webp",
       pdfSrc: "/certificates/pdf/certificado5Pdf.pdf",
     },
     {
       title: "HTML e CSS: praticando HTML/CSS",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado6.png",
+      thumbnailSrc: "/certificates/images/certificado6.webp",
       pdfSrc: "/certificates/pdf/certificado6Pdf.pdf",
     },
     {
       title: "HTML e CSS: responsividade com mobile-first",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado7.png",
+      thumbnailSrc: "/certificates/images/certificado7.webp",
       pdfSrc: "/certificates/pdf/certificado7Pdf.pdf",
     },
     {
       title:
         "HTML e CSS: trabalhando com responsividade e publicação de projetos",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado8.png",
+      thumbnailSrc: "/certificates/images/certificado8.webp",
       pdfSrc: "/certificates/pdf/certificado8Pdf.pdf",
     },
     {
       title: "JavaScript: construindo páginas dinâmicas",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado9.png",
+      thumbnailSrc: "/certificates/images/certificado9.webp",
       pdfSrc: "/certificates/pdf/certificado9Pdf.pdf",
     },
     {
       title: "JavaScript: entendendo promises e async/await",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado10.png",
+      thumbnailSrc: "/certificates/images/certificado10.webp",
       pdfSrc: "/certificates/pdf/certificado10Pdf.pdf",
     },
     {
       title: "JavaScript: explorando a linguagem",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado11.png",
+      thumbnailSrc: "/certificates/images/certificado11.webp",
       pdfSrc: "/certificates/pdf/certificado11Pdf.pdf",
     },
     {
       title: "JavaScript: interfaces e Herança em Orientação a Objetos",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado12.png",
+      thumbnailSrc: "/certificates/images/certificado12.webp",
       pdfSrc: "/certificates/pdf/certificado12Pdf.pdf",
     },
     {
       title: "JavaScript: métodos de array",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado13.png",
+      thumbnailSrc: "/certificates/images/certificado13.webp",
       pdfSrc: "/certificates/pdf/certificado13Pdf.pdf",
     },
     {
       title: "JavaScript: programando a Orientação a Objetos",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado14.png",
+      thumbnailSrc: "/certificates/images/certificado14.webp",
       pdfSrc: "/certificates/pdf/certificado14Pdf.pdf",
     },
     {
       title: "Lógica de programação: explore funções e listas",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado15.png",
+      thumbnailSrc: "/certificates/images/certificado15.webp",
       pdfSrc: "/certificates/pdf/certificado15Pdf.pdf",
     },
     {
       title: "Lógica de programação: mergulhe em programação com JavaScript",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado16.png",
+      thumbnailSrc: "/certificates/images/certificado16.webp",
       pdfSrc: "/certificates/pdf/certificado16Pdf.pdf",
     },
     {
       title:
         "Node.js e terminal: dominando o ambiente de desenvolvimento front-end",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado17.png",
+      thumbnailSrc: "/certificates/images/certificado17.webp",
       pdfSrc: "/certificates/pdf/certificado17Pdf.pdf",
     },
     {
       title: "React: desenvolvendo com JavaScript",
       issuer: "Alura",
-      thumbnailSrc: "/certificates/images/certificado18.png",
+      thumbnailSrc: "/certificates/images/certificado18.webp",
       pdfSrc: "/certificates/pdf/certificado18Pdf.pdf",
     },
   ];
@@ -143,7 +143,7 @@ export default function App() {
   const portfolioData = [
     {
       id: "proj1",
-      imageSrc: "/projetoQuilha.png",
+      imageSrc: "/projetoQuilha.webp",
       title: "Quilha Hub — Hub Criativo",
       description:
         "Site institucional para hub criativo especializado em branding, marketing digital, web design e direção criativa. Layout imersivo com animações fluidas, seções de serviços interativas e cases de sucesso.",
@@ -153,7 +153,7 @@ export default function App() {
     },
     {
       id: "proj2",
-      imageSrc: "/projetoPortfolioLucasPicollo.png",
+      imageSrc: "/projetoPortfolioLucasPicollo.webp",
       title: "Portfólio Lucas Picollo",
       description:
         "Portfólio pessoal desenvolvido para o cliente Lucas Picollo, com design moderno, navegação intuitiva e apresentação visual dos seus trabalhos e habilidades.",
@@ -163,7 +163,7 @@ export default function App() {
     },
     {
       id: "proj3",
-      imageSrc: "/projetoPortfolio.png",
+      imageSrc: "/projetoPortfolio.webp",
       title: "Portfólio Pessoal",
       description:
         "Meu próprio portfólio profissional com animações GSAP, design responsivo e seções interativas para apresentar projetos, certificados e tecnologias dominadas.",
@@ -173,7 +173,7 @@ export default function App() {
     },
     {
       id: "proj4",
-      imageSrc: "/projetoBadTube.png",
+      imageSrc: "/projetoBadTube.webp",
       title: "BadTube",
       description:
         "Clone inspirado no YouTube com interface de vídeo, navegação por categorias e design responsivo focado em reproduzir a experiência de uma plataforma de streaming.",
@@ -183,7 +183,7 @@ export default function App() {
     },
     {
       id: "proj5",
-      imageSrc: "/projetoMeuAmor.png",
+      imageSrc: "/projetoMeuAmor.webp",
       title: "Meu Amor",
       description:
         "Página web interativa e afetiva, criada como presente personalizado com animações, galeria de fotos e mensagens especiais.",
