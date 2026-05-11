@@ -4,18 +4,24 @@ import {
   useLayoutEffect,
   useRef,
   useCallback,
+  lazy,
+  Suspense,
 } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Header from "./components/Header";
-import CustomCursor from "./components/CustomCursor";
-import AboutMe from "./components/AboutMe";
-import Tecnologias from "./components/Tecnologias";
-import Portfolio from "./components/Portfolio";
-import Certificados from "./components/Certificados";
-import Footer from "./components/Footer";
-import Feed from "./components/Feed";
+import { isHoverCapable } from "./utils/perf";
+
+// Apenas o Header é carregado no bundle inicial — o resto entra em chunks
+// separados via React.lazy (melhora drasticamente FCP/LCP em mobile).
+const CustomCursor = lazy(() => import("./components/CustomCursor"));
+const AboutMe = lazy(() => import("./components/AboutMe"));
+const Tecnologias = lazy(() => import("./components/Tecnologias"));
+const Portfolio = lazy(() => import("./components/Portfolio"));
+const Certificados = lazy(() => import("./components/Certificados"));
+const Footer = lazy(() => import("./components/Footer"));
+const Feed = lazy(() => import("./components/Feed"));
 
 import "./styles/global.css";
 
@@ -24,6 +30,9 @@ gsap.registerPlugin(ScrollTrigger);
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeSection, setActiveSection] = useState("inicio");
+  // CustomCursor só faz sentido em dispositivos com mouse fino.
+  // Em mobile/touch ele é puro custo (MutationObserver global + listeners).
+  const [showCustomCursor] = useState(() => isHoverCapable());
 
   const certificatesData = [
     {
@@ -376,31 +385,39 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <CustomCursor />
+      {showCustomCursor && (
+        <Suspense fallback={null}>
+          <CustomCursor />
+        </Suspense>
+      )}
       <div className="content-wrapper" ref={scrollContainerRef}>
         <Header sectionRef={sectionRefs.inicio} onNavigate={handleNavigate} />
         <main>
-          <AboutMe sectionRef={sectionRefs.sobre} />
+          <Suspense fallback={null}>
+            <AboutMe sectionRef={sectionRefs.sobre} />
 
-          <div id="jornada" ref={sectionRefs.jornada}>
-            <Feed />
-          </div>
+            <div id="jornada" ref={sectionRefs.jornada}>
+              <Feed />
+            </div>
 
-          <Tecnologias
-            sectionRef={sectionRefs.tecnologias}
-            techStackData={techStackData}
-          />
-          <Portfolio
-            sectionRef={sectionRefs.portfolio}
-            portfolioData={portfolioData}
-            onProjectClick={setSelectedProject}
-          />
-          <Certificados
-            sectionRef={sectionRefs.certificados}
-            certificatesData={certificatesData}
-          />
+            <Tecnologias
+              sectionRef={sectionRefs.tecnologias}
+              techStackData={techStackData}
+            />
+            <Portfolio
+              sectionRef={sectionRefs.portfolio}
+              portfolioData={portfolioData}
+              onProjectClick={setSelectedProject}
+            />
+            <Certificados
+              sectionRef={sectionRefs.certificados}
+              certificatesData={certificatesData}
+            />
+          </Suspense>
         </main>
-        <Footer sectionRef={sectionRefs.contato} />
+        <Suspense fallback={null}>
+          <Footer sectionRef={sectionRefs.contato} />
+        </Suspense>
 
         {selectedProject && (
           <div className="modal-overlay" onClick={handleCloseModal}>

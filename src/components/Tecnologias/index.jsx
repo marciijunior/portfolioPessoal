@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./TechStack.css";
+import { shouldSkipEntranceAnimations } from "../../utils/perf";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,7 @@ export default function Tecnologias({ sectionRef, techStackData }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    if (shouldSkipEntranceAnimations()) return;
     const ctx = gsap.context(() => {
       const trigger = {
         trigger: containerRef.current,

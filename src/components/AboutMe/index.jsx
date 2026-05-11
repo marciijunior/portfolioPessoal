@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./AboutMe.css";
+import { shouldSkipEntranceAnimations } from "../../utils/perf";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +11,7 @@ export default function AboutMe({ sectionRef }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    if (shouldSkipEntranceAnimations()) return;
     const ctx = gsap.context(() => {
       const trigger = {
         trigger: containerRef.current,
@@ -127,18 +129,21 @@ export default function AboutMe({ sectionRef }) {
             alt="Foto de Marcio Junior"
             className="about-photo about-photo-1"
             loading="lazy"
+            decoding="async"
           />
           <img
             src="/foto-about-me.webp"
             alt="Foto de Marcio Junior"
             className="about-photo about-photo-2"
             loading="lazy"
+            decoding="async"
           />
           <img
             src="/foto-about-me.webp"
             alt="Foto de Marcio Junior"
             className="about-photo about-photo-3"
             loading="lazy"
+            decoding="async"
           />
         </div>
 

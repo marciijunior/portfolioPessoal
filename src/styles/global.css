@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/* Montserrat é carregada no <head> via <link>, com pesos restritos
+   aos realmente usados (400/500/600/700/900). Evita @import bloqueante
+   aqui dentro do CSS. */
 
 :root {
   --cor1: #ff4d05;

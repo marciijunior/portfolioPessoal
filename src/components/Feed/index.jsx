@@ -12,6 +12,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./Feed.css";
+import { shouldSkipEntranceAnimations } from "../../utils/perf";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +34,7 @@ const TimelineCard = ({ post, index, side }) => {
 
   useEffect(() => {
     if (!cardRef.current) return;
+    if (shouldSkipEntranceAnimations()) return;
 
     const fromX = side === "left" ? -60 : 60;
 
@@ -107,7 +109,7 @@ const TimelineCard = ({ post, index, side }) => {
 
         {post.imageUrl && (
           <div className="tl-card-img-wrap">
-            <img src={post.imageUrl} alt={post.title} className="tl-card-img" loading="lazy" />
+            <img src={post.imageUrl} alt={post.title} className="tl-card-img" loading="lazy" decoding="async" />
           </div>
         )}
 
@@ -200,6 +202,7 @@ export default function Feed() {
 
   /* ── GSAP entrance animations ── */
   useEffect(() => {
+    if (shouldSkipEntranceAnimations()) return;
     const ctx = gsap.context(() => {
       const trigger = {
         trigger: sectionRef.current,
@@ -276,6 +279,7 @@ export default function Feed() {
   }, []);
 
   useEffect(() => {
+    if (shouldSkipEntranceAnimations()) return;
     if (!loadingYears && yearsRef.current) {
       const buttons = yearsRef.current.querySelectorAll(".jornada-year-btn");
       gsap.fromTo(

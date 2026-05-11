@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./Portfolio.css";
 import "./Modal.css";
+import { shouldSkipEntranceAnimations } from "../../utils/perf";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ export default function Portfolio({
   const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
+    if (shouldSkipEntranceAnimations()) return;
     const ctx = gsap.context(() => {
       const trigger = {
         trigger: containerRef.current,
@@ -133,6 +135,7 @@ export default function Portfolio({
                   alt={`Projeto ${project.title}`}
                   className="portfolio-card__img"
                   loading="lazy"
+                  decoding="async"
                 />
                 {index === 0 && (
                   <div className="portfolio-card__badge">

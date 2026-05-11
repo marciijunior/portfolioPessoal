@@ -2,6 +2,7 @@ import { useEffect, useRef, useCallback, useState } from "react";
 import { gsap } from "gsap";
 
 import "./Header.css";
+import { shouldSkipEntranceAnimations } from "../../utils/perf";
 
 const PRESET_COLORS = [
   { hex: "#ff4d05", label: "Laranja" },
@@ -171,6 +172,7 @@ export default function Header({ sectionRef, onNavigate }) {
   }, [panelOpen]);
 
   useEffect(() => {
+    if (shouldSkipEntranceAnimations()) return;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.2 });
 
@@ -243,7 +245,7 @@ export default function Header({ sectionRef, onNavigate }) {
       {/* ── Navbar ── */}
       <nav className="navbar" ref={navRef} aria-label="Navegação principal">
         <div className="nav-logo">
-          <img src="/logo.webp" alt="Logo Marcio Junior" />
+          <img src="/logo.webp" alt="Logo Marcio Junior" width="48" height="48" decoding="async" />
         </div>
 
         <ul className="nav-links">
@@ -567,6 +569,10 @@ export default function Header({ sectionRef, onNavigate }) {
               src="/fotoPessoal.webp"
               alt="Foto de Marcio Junior"
               className="hero-portrait-img"
+              fetchpriority="high"
+              decoding="async"
+              width="800"
+              height="1000"
             />
           </div>
         </div>

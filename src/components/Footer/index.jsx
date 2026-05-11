@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./Footer.css";
+import { shouldSkipEntranceAnimations } from "../../utils/perf";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,6 +56,7 @@ export default function Footer({ sectionRef }) {
   }, []);
 
   useEffect(() => {
+    if (shouldSkipEntranceAnimations()) return;
     const ctx = gsap.context(() => {
       const trigger = {
         trigger: footerRef.current,

@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./Certificates.css";
+import { shouldSkipEntranceAnimations } from "../../utils/perf";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,6 +37,7 @@ export default function Certificados({ sectionRef, certificatesData }) {
 
   /* ── GSAP entrance ── */
   useEffect(() => {
+    if (shouldSkipEntranceAnimations()) return;
     const ctx = gsap.context(() => {
       const trigger = {
         trigger: containerRef.current,
@@ -106,6 +108,7 @@ export default function Certificados({ sectionRef, certificatesData }) {
   /* ── Animate cards when opened or filter changes ── */
   useEffect(() => {
     if (!open) return;
+    if (shouldSkipEntranceAnimations()) return;
     const cards = containerRef.current?.querySelectorAll(".cert-card");
     if (!cards?.length) return;
 
@@ -210,6 +213,7 @@ export default function Certificados({ sectionRef, certificatesData }) {
                       alt={`Certificado de ${cert.title}`}
                       className="cert-card__img"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="cert-card__overlay">
                       <span className="cert-card__view-btn">
