@@ -742,6 +742,8 @@ header#inicio::before {
   .hero-split {
     flex-direction: column;
     position: relative;
+    flex: 1;
+    min-height: 0;
   }
 
   .hero-content {
@@ -749,6 +751,7 @@ header#inicio::before {
     text-align: center;
     position: relative;
     z-index: 2;
+    background: transparent;
   }
 
   .hero-headline {
