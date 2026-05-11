@@ -751,7 +751,7 @@ header#inicio::before {
     align-items: center;
     text-align: center;
     position: relative;
-    z-index: 2;
+    z-index: 30;
     background: transparent;
   }
 
