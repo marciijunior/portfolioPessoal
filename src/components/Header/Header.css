@@ -8,6 +8,9 @@ header#inicio {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  /* Em celulares com barra de URL dinâmica usa svh para caber na viewport visível */
+  height: 100svh;
+  max-height: 100svh;
   padding: 0;
   overflow: hidden;
   background: #0a0a0a;
@@ -756,7 +759,8 @@ header#inicio::before {
   .hero-portrait-wrapper {
     order: -1;
     width: 100%;
-    height: 40vh;
+    /* Reduzido para garantir que o hero inteiro caiba em 100svh no celular */
+    height: 32svh;
     overflow: visible;
   }
 
@@ -843,27 +847,28 @@ header#inicio::before {
   }
 
   .hero-portrait-wrapper {
-    height: 40vh;
+    height: 30svh;
     overflow: visible;
   }
 
   .hero-portrait-img {
-    -webkit-mask-image: linear-gradient(to bottom, #000 5%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
+    /* Sem máscara: a foto deve aparecer inteira no mobile */
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .hero-portrait-wrapper::before,
   .hero-portrait-wrapper::after {
     opacity: 0.5;
-    top: 40%;
-    width: min(55vw, 35vh);
-    height: min(55vw, 35vh);
+    top: 22%;
+    width: min(46vw, 28vh);
+    height: min(46vw, 28vh);
     aspect-ratio: 1 / 1;
   }
 
   .hero-portrait-wrapper::after {
-    width: min(68vw, 42vh);
-    height: min(68vw, 42vh);
+    width: min(56vw, 34vh);
+    height: min(56vw, 34vh);
   }
 
   .hero-outline-text,
