@@ -748,7 +748,6 @@ header#inicio::before {
     text-align: center;
     position: relative;
     z-index: 2;
-    justify-content: center;
   }
 
   .hero-headline {
@@ -784,10 +783,20 @@ header#inicio::before {
     mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
   }
 
-  /* Anéis decorativos não fazem sentido com a foto como fundo */
+  /* Anéis decorativos posicionados ao redor da cabeça — acima da foto */
   .hero-portrait-wrapper::before,
   .hero-portrait-wrapper::after {
-    display: none;
+    opacity: 0.6;
+    top: 22%;
+    z-index: 4;
+    width: min(48vw, 34vh);
+    height: min(48vw, 34vh);
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero-portrait-wrapper::after {
+    width: min(58vw, 42vh);
+    height: min(58vw, 42vh);
   }
 
   .hero-available {
@@ -854,6 +863,21 @@ header#inicio::before {
   /* Em telas bem pequenas mantém a foto como background herdado do bloco @900 */
   .hero-portrait-img {
     filter: brightness(0.4) saturate(0.85);
+  }
+
+  .hero-portrait-wrapper::before,
+  .hero-portrait-wrapper::after {
+    opacity: 0.5;
+    top: 22%;
+    z-index: 4;
+    width: min(46vw, 28vh);
+    height: min(46vw, 28vh);
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero-portrait-wrapper::after {
+    width: min(56vw, 34vh);
+    height: min(56vw, 34vh);
   }
 
   .hero-outline-text,
