@@ -761,22 +761,24 @@ header#inicio::before {
   }
 
   .hero-portrait-img {
-    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+    /* Sem máscara: a foto deve aparecer inteira no mobile */
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
+  /* Anéis decorativos posicionados ao redor da cabeça (parte superior) */
   .hero-portrait-wrapper::before,
   .hero-portrait-wrapper::after {
     opacity: 0.6;
-    top: 45%;
-    width: min(60vw, 45vh);
-    height: min(60vw, 45vh);
+    top: 22%;
+    width: min(48vw, 34vh);
+    height: min(48vw, 34vh);
     aspect-ratio: 1 / 1;
   }
 
   .hero-portrait-wrapper::after {
-    width: min(72vw, 55vh);
-    height: min(72vw, 55vh);
+    width: min(58vw, 42vh);
+    height: min(58vw, 42vh);
   }
 
   .hero-available {
@@ -846,7 +848,7 @@ header#inicio::before {
   }
 
   .hero-portrait-img {
-    -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 5%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
   }
 
