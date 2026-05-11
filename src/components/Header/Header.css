@@ -968,7 +968,8 @@ header#inicio::before {
 
 @media (max-height: 900px) and (max-width: 900px) {
   .hero-portrait-wrapper {
-    height: 30vh;
+    /* Mant\u00e9m a foto cobrindo toda a se\u00e7\u00e3o no mobile */
+    height: 100%;
   }
 }
 
