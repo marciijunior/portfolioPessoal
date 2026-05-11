@@ -772,7 +772,8 @@ header#inicio::before {
     height: 100%;
     order: 0;
     z-index: 0;
-    overflow: hidden;
+    /* Permite que os anéis decorativos extrapolem o wrapper sem serem cortados */
+    overflow: visible;
     pointer-events: none;
   }
 
@@ -782,18 +783,17 @@ header#inicio::before {
     object-fit: cover;
     object-position: center top;
     filter: brightness(0.55) saturate(0.9);
-    /* Foto fica acima dos anéis decorativos */
     position: relative;
-    z-index: 2;
+    z-index: 1;
   }
 
-  /* Anéis decorativos atrás da foto, posicionados na região da cabeça */
+  /* Anéis decorativos — à frente da foto E da navbar */
   .hero-portrait-wrapper::before,
   .hero-portrait-wrapper::after {
     opacity: 0.7;
-    top: 26%;
+    top: 24%;
     left: 50%;
-    z-index: 1;
+    z-index: 30;
     width: min(70vw, 56vh);
     height: min(70vw, 56vh);
     aspect-ratio: 1 / 1;
@@ -873,9 +873,9 @@ header#inicio::before {
   .hero-portrait-wrapper::before,
   .hero-portrait-wrapper::after {
     opacity: 0.65;
-    top: 24%;
+    top: 22%;
     left: 50%;
-    z-index: 1;
+    z-index: 30;
     width: min(68vw, 52vh);
     height: min(68vw, 52vh);
     aspect-ratio: 1 / 1;
