@@ -738,22 +738,17 @@ header#inicio::before {
     padding: 2rem 1.5rem;
   }
 
-  /* No mobile a foto vira "background" da se\u00e7\u00e3o e o texto fica por cima,
-     ancorado na parte inferior. */
   .hero-split {
     flex-direction: column;
     position: relative;
-    justify-content: flex-end;
   }
 
   .hero-content {
     align-items: center;
     text-align: center;
-    justify-content: flex-end;
     position: relative;
-    /* Acima da foto (img tem z-index 3) e do overlay escuro */
-    z-index: 5;
-    padding-top: 0;
+    z-index: 2;
+    justify-content: center;
   }
 
   .hero-headline {
@@ -765,14 +760,15 @@ header#inicio::before {
     text-align: center;
   }
 
+  /* Foto vira o fundo da seção inteira no mobile */
   .hero-portrait-wrapper {
-    order: -1;
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+    order: 0;
+    z-index: 0;
     overflow: hidden;
-    z-index: 1;
     pointer-events: none;
   }
 
@@ -780,51 +776,18 @@ header#inicio::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
-    /* Fade suave no rodap\u00e9 da pr\u00f3pria imagem para integrar com o overlay */
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      #000 55%,
-      rgba(0, 0, 0, 0.55) 85%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      #000 55%,
-      rgba(0, 0, 0, 0.55) 85%,
-      transparent 100%
-    );
+    object-position: center top;
+    /* Escurece a foto para legibilidade do texto sobreposto */
+    filter: brightness(0.42) saturate(0.85);
+    /* Fade suave no rodapé para integrar com o restante do site */
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
   }
 
-  /* Desliga os an\u00e9is decorativos no mobile */
-  .hero-portrait-wrapper::before {
-    content: none;
-  }
-
-  /* Veil escuro por cima da foto, do meio para baixo, garantindo
-     legibilidade do texto que fica ancorado no rodap\u00e9 */
+  /* Anéis decorativos não fazem sentido com a foto como fundo */
+  .hero-portrait-wrapper::before,
   .hero-portrait-wrapper::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    border: none;
-    border-radius: 0;
-    transform: none;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(10, 10, 10, 0.15) 40%,
-      rgba(10, 10, 10, 0.7) 70%,
-      rgba(10, 10, 10, 0.95) 90%,
-      #0a0a0a 100%
-    );
-    box-shadow: none;
-    animation: none;
-    opacity: 1;
-    pointer-events: none;
+    display: none;
   }
 
   .hero-available {
@@ -888,21 +851,9 @@ header#inicio::before {
     gap: 0.5rem;
   }
 
-  /* Mant\u00e9m a foto como background da se\u00e7\u00e3o (j\u00e1 definido em @900px).
-     Ajustes finos do mask para celulares menores. */
+  /* Em telas bem pequenas mantém a foto como background herdado do bloco @900 */
   .hero-portrait-img {
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      #000 50%,
-      rgba(0, 0, 0, 0.5) 82%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      #000 50%,
-      rgba(0, 0, 0, 0.5) 82%,
-      transparent 100%
-    );
+    filter: brightness(0.4) saturate(0.85);
   }
 
   .hero-outline-text,
