@@ -735,7 +735,7 @@ header#inicio::before {
   }
 
   .hero-content {
-    padding: 2rem 1.5rem 3rem;
+    padding: 2rem 1.5rem 5.5rem;
     justify-content: flex-end;
   }
 
@@ -782,23 +782,26 @@ header#inicio::before {
     object-fit: cover;
     object-position: center top;
     filter: brightness(0.55) saturate(0.9);
+    /* Foto fica acima dos anéis decorativos */
+    position: relative;
+    z-index: 2;
   }
 
-  /* Anéis centralizados sobre a foto */
+  /* Anéis decorativos atrás da foto, posicionados na região da cabeça */
   .hero-portrait-wrapper::before,
   .hero-portrait-wrapper::after {
-    opacity: 0.55;
-    top: 50%;
+    opacity: 0.7;
+    top: 26%;
     left: 50%;
-    z-index: 4;
-    width: min(56vw, 50vh);
-    height: min(56vw, 50vh);
+    z-index: 1;
+    width: min(70vw, 56vh);
+    height: min(70vw, 56vh);
     aspect-ratio: 1 / 1;
   }
 
   .hero-portrait-wrapper::after {
-    width: min(68vw, 62vh);
-    height: min(68vw, 62vh);
+    width: min(82vw, 68vh);
+    height: min(82vw, 68vh);
   }
 
   .hero-available {
@@ -869,18 +872,18 @@ header#inicio::before {
 
   .hero-portrait-wrapper::before,
   .hero-portrait-wrapper::after {
-    opacity: 0.5;
-    top: 50%;
+    opacity: 0.65;
+    top: 24%;
     left: 50%;
-    z-index: 4;
-    width: min(54vw, 46vh);
-    height: min(54vw, 46vh);
+    z-index: 1;
+    width: min(68vw, 52vh);
+    height: min(68vw, 52vh);
     aspect-ratio: 1 / 1;
   }
 
   .hero-portrait-wrapper::after {
-    width: min(66vw, 58vh);
-    height: min(66vw, 58vh);
+    width: min(80vw, 64vh);
+    height: min(80vw, 64vh);
   }
 
   .hero-outline-text,
