@@ -944,7 +944,7 @@ header#inicio::before {
   .hero-marquee-wrapper {
     padding: clamp(0.4rem, 0.8vh, 0.8rem) 0;
     position: relative;
-    z-index: 2;
+    z-index: 30;
     background: rgba(10, 10, 10, 0.7);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
