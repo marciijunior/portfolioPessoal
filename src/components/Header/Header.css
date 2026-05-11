@@ -765,9 +765,9 @@ header#inicio::before {
   }
 
   .hero-portrait-img {
-    /* Sem máscara: a foto deve aparecer inteira no mobile */
-    -webkit-mask-image: none;
-    mask-image: none;
+    /* Foto aparece inteira; degradê sutil apenas no finalzinho inferior */
+    -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
   }
 
   /* Anéis decorativos posicionados ao redor da cabeça (parte superior) */
@@ -852,9 +852,9 @@ header#inicio::before {
   }
 
   .hero-portrait-img {
-    /* Sem máscara: a foto deve aparecer inteira no mobile */
-    -webkit-mask-image: none;
-    mask-image: none;
+    /* Foto aparece inteira; degradê sutil apenas no finalzinho inferior */
+    -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
   }
 
   .hero-portrait-wrapper::before,
